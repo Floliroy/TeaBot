@@ -1,0 +1,25 @@
+{
+  "name": "teapbot",
+  "version": "1.0.0",
+  "description": "Bot for the Teä-P LoL team",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "dev": "nodemon main.js"
+  },
+  "author": "Floliroy",
+  "license": "ISC",
+  "dependencies": {
+    "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+    "discord.js": "^11.5.1",
+    "dotenv": "^7.0.0",
+    "google-spreadsheet": "^2.0.7",
+    "googleapis": "^39.2.0",
+    "message": "0.0.1",
+    "moment": "^2.24.0",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}
