@@ -145,22 +145,23 @@ bot.on('message', function (message) {
         }
     }*/
     
-    if(message.content === "ok" || message.content === "oK" || message.content === "Ok" || message.content === "OK"){
+    var texte = message.content.toLowerCase();
+    if(texte === "ok"){
         message.channel.send("sur glace!")
     }
-    if(message.content.includes("slt") || message.content.includes("salut") || message.content.includes("bonjour")){
+    if((texte.includes("slt") || texte.includes("salut") || texte.includes("bonjour")) && message.author !== bot.user){
         message.channel.send("slt mon bro :wave:")
     }
-    if(message.content.includes("tg") || message.content.includes("Tg") || message.content.includes("TG")){
+    if(texte.includes("tg") && message.author !== bot.user){
         message.reply("toi tg!")
     }
-    if(message.content === "gg" || message.content === "gG" || message.content === "Gg" || message.content === "GG"){
+    if(texte === "gg"){
         message.channel.send("EZ")
     }
 })
 
 //si une réaction est enlevé sous le message du bot (pour les events) il la remet
-bot.on("messageReactionRemove", (reaction, user) => {
+/*bot.on("messageReactionRemove", (reaction, user) => {
     if (reaction.message.author.username === "Bot Teä-P" && user.username !== "Bot Teä-P") {
         if (reaction.users.size < 1) {
             reaction.message.react(reaction.emoji)
@@ -185,4 +186,4 @@ bot.on("messageReactionAdd", (reaction, user) => {
             })
         })
     }
-})
+})*/
