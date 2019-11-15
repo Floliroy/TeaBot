@@ -41,19 +41,13 @@ bot.on('message', function (message) {
         //includes
         if((texte.includes("slt") || texte.includes("salut") || texte.includes("bonjour")) && message.author !== bot.user){
             message.channel.send("slt mon bro :wave:")
-        }
-        if(texte.includes("tg") && message.author !== bot.user){
+        }else if(texte.includes("tg") && message.author !== bot.user){
             message.reply("toi tg!")
-        }
-        if(texte.includes("@everyone")){
+        }else if(texte.includes("@everyone")){
             message.reply("nique ta mère avec ton tag everyone !")
-        }
-        if(texte.includes("@here")){
+        }else if(texte.includes("@here")){
             message.reply("nique ta mère avec ton tag here !")
-        }
-        
-        //par rapport aux tags
-        if(!message.content.includes(" ") && message.mentions.users.first(undefined) === message.mentions.users.last(undefined)){
+        }else if(!message.content.includes(" ") && message.mentions.users.first(undefined) === message.mentions.users.last(undefined)){
             //on a un seul tag
             if(message.mentions.users.firstKey(undefined) === "112632359207108608"){ //Flo
                 message.channel.send("Le plus beau !")
