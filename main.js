@@ -14,7 +14,7 @@ var bot = new Discord.Client({
 })
 bot.login(process.env.TOKEN)
 bot.on("ready", function () {
-    bot.user.setActivity("Baiser Patachon").catch(console.error)
+    bot.user.setActivity("Soulever o4").catch(console.error)
 })
 
 /*
