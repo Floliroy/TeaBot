@@ -29,6 +29,7 @@ bot.on('ready', function (evt) {
 bot.on('message', function (message) {
     if(!message.content.includes(" ") && message.content.startsWith("@") && (message.content.length - message.content.replace(new RegExp(char,"@"),"").length === 1)){
         //it's a tag !
+        message.reply("tag")
         if(message.mentions.USERS_PATTERN === "<@634330412881281054>"){
             message.channel.send("Le plus beau !")
         }
