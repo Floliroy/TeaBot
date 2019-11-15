@@ -43,14 +43,14 @@ bot.on('message', function (message) {
         message.channel.send("T'es de la police ?")
     }else{
         //includes
-        if((texte.includes("slt") || texte.includes("salut") || texte.includes("bonjour")) && message.author !== bot.user){
-            message.channel.send("slt mon bro :wave:")
-        }else if(texte.includes("tg") && message.author !== bot.user){
-            message.reply("toi tg!")
-        }else if(texte.includes("@everyone")){
+        if(texte.includes("@everyone")){
             message.reply("nique ta mère avec ton tag everyone !")
         }else if(texte.includes("@here")){
             message.reply("nique ta mère avec ton tag here !")
+        }else if((texte.includes("slt") || texte.includes("salut") || texte.includes("bonjour")) && message.author !== bot.user){
+            message.channel.send("slt mon bro :wave:")
+        }else if(texte.includes("tg") && message.author !== bot.user){
+            message.reply("toi tg!")
         }else if(!message.content.includes(" ") && message.mentions.users.first(undefined) === message.mentions.users.last(undefined)){
             //on a un seul tag
             if(message.mentions.users.firstKey(undefined) === "112632359207108608"){ //Flo
