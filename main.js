@@ -27,11 +27,10 @@ bot.on('ready', function (evt) {
     logger.info("Running")
 })
 bot.on('message', function (message) {
-    var mention = message.mentions.users
-    if(mention.size() == 1){
+    if(message.mentions.users.first() === message.mentions.users.last() && !message.content.includes(" ")){
         //on a un seul tag
         message.reply("TAG")
-        if(mention.has("112632359207108608")){
+        if(message.mentions.users.firstKey("112632359207108608")){
             message.channel.send("Le plus beau !")
         }
     }
