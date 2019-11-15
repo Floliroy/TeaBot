@@ -27,6 +27,10 @@ bot.on('ready', function (evt) {
     logger.info("Running")
 })
 bot.on('message', function (message) {
+    if(message.content === "<@112632359207108608>"){
+        message.channel.send("Le plus beau !")
+    }
+    
     var texte = message.content.toLowerCase();
     if(texte === "ok"){
         message.channel.send("sur glace!")
