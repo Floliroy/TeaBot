@@ -27,7 +27,7 @@ bot.on('ready', function (evt) {
     logger.info("Running")
 })
 bot.on('message', function (message) {
-    if(message.mentions.users.first() === message.mentions.users.last() && !message.content.includes(" ")){
+    if(!message.content.includes(" ") && message.mentions.users.first() === message.mentions.users.last()){
         //on a un seul tag
         message.reply("TAG")
         if(message.mentions.users.firstKey("112632359207108608")){
