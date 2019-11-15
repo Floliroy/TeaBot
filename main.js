@@ -29,6 +29,12 @@ bot.on('ready', function (evt) {
 bot.on('message', function (message) {    
     var texte = message.content.toLowerCase();
     //comparaisons
+    if(texte.includes("g2")){
+        message.react("3️⃣")
+            .then(() => msg.react("➖"))
+            .then(() => msg.react("0️⃣"))
+    }
+    
     if(texte === "ok"){
         if(Math.random()<0.5){
             message.channel.send("sur glace!")
