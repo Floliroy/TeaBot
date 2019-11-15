@@ -27,13 +27,13 @@ bot.on('ready', function (evt) {
     logger.info("Running")
 })
 bot.on('message', function (message) {
-    /*if(!message.content.includes(" ") && message.mentions.users.first() === message.mentions.users.last()){
+    if(!message.content.includes(" ") && message.mentions.users.first(undefined) === message.mentions.users.last(undefined)){
         //on a un seul tag
         message.reply("TAG")
-        if(message.mentions.users.firstKey("112632359207108608")){
+        if(message.mentions.users.firstKey(undefined) === "112632359207108608"){
             message.channel.send("Le plus beau !")
         }
-    }*/
+    }
     
     var texte = message.content.toLowerCase();
     if(texte === "ok"){
