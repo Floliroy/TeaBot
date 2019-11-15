@@ -30,7 +30,11 @@ bot.on('message', function (message) {
     var texte = message.content.toLowerCase();
     //comparaisons
     if(texte === "ok"){
-        message.channel.send("sur glace!")
+        if(Math.random()<0.5){
+            message.channel.send("sur glace!")
+        }else{
+            message.channel.send("sur gazon!")
+        }
     }else if(texte === "gg"){
         message.channel.send("EZ")
     }else if(texte === "mdr" || texte === "lol"){
