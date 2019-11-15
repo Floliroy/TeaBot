@@ -31,8 +31,8 @@ bot.on('message', function (message) {
     //comparaisons
     if(texte.includes("g2")){
         message.react("3️⃣")
-            .then(() => msg.react("➖"))
-            .then(() => msg.react("0️⃣"))
+        message.react("➖"))
+        message.react("0️⃣"))
     }
     
     if(texte === "ok"){
