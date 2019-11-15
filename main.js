@@ -164,6 +164,12 @@ bot.on('message', function (message) {
     if(texte.includes("@here")){
         message.reply("nique ta mère avec ton tag here !")
     }
+    if(texte === "mdr" || texte === "lol"){
+        message.channel.send("OH MOI AUSSI CA M'A TUÉ JPP ! XD")
+    }
+    if(texte === "quoi" || texte === "quoi?" || texte === "quoi ?"){
+        message.channel.send("T'es de la police ?")
+    }
 })
 
 //si une réaction est enlevé sous le message du bot (pour les events) il la remet
