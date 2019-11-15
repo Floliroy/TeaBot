@@ -27,10 +27,11 @@ bot.on('ready', function (evt) {
     logger.info("Running")
 })
 bot.on('message', function (message) {
-    if(!message.content.includes(" ") && message.content.startsWith("@")){
-        //it's a tag !
-        message.reply("tag")
-        if(message.mentions.USERS_PATTERN === "<@634330412881281054>"){
+    var mention = message.mentions.users
+    if(mention.size() == 1){
+        //on a un seul tag
+        message.reply("TAG")
+        if(mention.has("112632359207108608")){
             message.channel.send("Le plus beau !")
         }
     }
