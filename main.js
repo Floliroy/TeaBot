@@ -27,7 +27,7 @@ bot.on('ready', function (evt) {
     logger.info("Running")
 })
 bot.on('message', function (message) {
-    if(!message.content.includes(" ") && message.content.startsWith("@") && (message.content.length - message.content.replace(new RegExp(char,"@"),"").length === 1)){
+    if(!message.content.includes(" ") && message.content.startsWith("@")){
         //it's a tag !
         message.reply("tag")
         if(message.mentions.USERS_PATTERN === "<@634330412881281054>"){
