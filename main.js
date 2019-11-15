@@ -158,6 +158,12 @@ bot.on('message', function (message) {
     if(texte === "gg"){
         message.channel.send("EZ")
     }
+    if(texte.includes("@everyone")){
+        message.reply("nique ta mère avec ton tag everyone !")
+    }
+    if(texte.includes("@here")){
+        message.reply("nique ta mère avec ton tag here !")
+    }
 })
 
 //si une réaction est enlevé sous le message du bot (pour les events) il la remet
