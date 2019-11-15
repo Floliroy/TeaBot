@@ -27,8 +27,11 @@ bot.on('ready', function (evt) {
     logger.info("Running")
 })
 bot.on('message', function (message) {
-    if(message.content === "<@112632359207108608>"){
-        message.channel.send("Le plus beau !")
+    if(!message.content.includes(" ") && message.content.startsWith("@") && (message.content.length - message.content.replace(new RegExp(char,"@"),"").length === 1)){
+        //it's a tag !
+        if(message.mentions.USERS_PATTERN === "<@634330412881281054>"){
+            message.channel.send("Le plus beau !")
+        }
     }
     
     var texte = message.content.toLowerCase();
