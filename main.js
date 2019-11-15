@@ -115,7 +115,7 @@ bot.on('ready', function (evt) {
 })
 bot.on('message', function (message) {
     // Pour savoir si c'est une commande qui est tapée
-    if (message.content.startsWith('!')) {
+    /*if (message.content.startsWith('!')) {
         var args = message.content.split(' ')
         var cmd = args[0]
 
@@ -143,6 +143,19 @@ bot.on('message', function (message) {
                 message.channel.send(getMessageRandomNumber())
                 break
         }
+    }*/
+    
+    if(message.content === "ok" || message.content === "oK" || message.content === "Ok" || message.content === "OK"){
+        message.channel.send("sur glace!")
+    }
+    if(message.content.includes("slt") || message.content.includes("salut") || message.content.includes("bonjour")){
+        message.channel.send("slt mon bro :wave:")
+    }
+    if(message.content.includes("tg") || message.content.includes("Tg") || message.content.includes("TG")){
+        message.reply("toi tg!")
+    }
+    if(message.content === "gg" || message.content === "gG" || message.content === "Gg" || message.content === "GG"){
+        message.channel.send("EZ")
     }
 })
 
