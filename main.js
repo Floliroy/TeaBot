@@ -50,6 +50,8 @@ bot.on('message', function (message) {
         message.channel.send("OH MOI AUSSI CA M'A TUÉ JPP ! XD")
     }else if(texte === "quoi" || texte === "quoi?" || texte === "quoi ?"){
         message.channel.send("T'es de la police ?")
+    }else if(texte === "m'énerve pas" || texte === "m'enerve pas" || texte === "m énerve pas"){
+        message.channel.send("je vais m'énerver")
     }else{
         //includes
         if(texte.includes("@everyone")){
