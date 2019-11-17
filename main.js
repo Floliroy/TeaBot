@@ -45,6 +45,11 @@ bot.on('message', function (message) {
         message.channel.send("EZ")   
     }else if(texte === "feu vert"){
         message.channel.send("La patte de l'expert")
+    }else if(texte === "!besch"){
+        message.delete()
+        if(message.author.id == "112632359207108608" || message.author.id == "230698146630598656" || message.author.id == "216919708560130048"){
+            message.channel.send("Apprends à écrire fdp")
+        }
     }else if(texte === "mdr" || texte === "lol"){
         message.channel.send("OH MOI AUSSI CA M'A TUÉ JPP ! XD")
     }else if(texte === "quoi" || texte === "quoi?" || texte === "quoi ?"){
@@ -57,6 +62,8 @@ bot.on('message', function (message) {
             message.reply("nique ta mère avec ton tag everyone !")
         }else if(texte.includes("@here")){
             message.reply("nique ta mère avec ton tag here !")
+        }else if(message.mentions.users.findKey(216919708560130048)){ //Coco
+                message.channel.send("Tag pas coco ça lui casse les couilles !")
         }else if((texte.includes("slt") || texte.includes("salut") || texte.includes("bonjour")) && message.author !== bot.user){
             message.channel.send("slt mon bro :wave:")
         }else if(texte.includes("tg") && message.author !== bot.user){
@@ -65,20 +72,18 @@ bot.on('message', function (message) {
             //on a un seul tag
             if(message.mentions.users.firstKey(undefined) === "112632359207108608"){ //Flo
                 message.channel.send("Le plus beau !")
-            }else if(message.mentions.users.firstKey(undefined) === "216919708560130048"){ //Coco
-                message.channel.send("Tag pas coco ça lui casse les couilles !")
             }else if(message.mentions.users.firstKey(undefined) === "468492284384509963"){ //Axelle
-                message.channel.send("La plus bonne !")
+                message.channel.send("La plus bonne ! ❤️")
             }else if(message.mentions.users.firstKey(undefined) === "289974845721018368"){ //Reweaxs
                 message.channel.send("Le suisse")
             }else if(message.mentions.users.firstKey(undefined) === "272360638741741570"){ //Diego
-                message.channel.send("Le beauf ❤️")
+                message.channel.send("Le beauf <:diego:587410993500520484>")
             }else if(message.mentions.users.firstKey(undefined) === "230698146630598656"){ //Pata
                 message.channel.send("Le plus fort !")
             }else if(message.mentions.users.firstKey(undefined) === "634330412881281054"){ //TheRealBot
                 message.channel.send("Qu'est-ce que tu veux ?")
             }else if(message.mentions.users.firstKey(undefined) === "311176545383219202"){ //Didou
-                message.channel.send("La plus bonne ❤️")
+                message.channel.send("L'homme parfait")
             }else if(message.mentions.users.firstKey(undefined) === "302898536356511745"){ //o4
                 message.channel.send("Le plus déco ...")
             }
