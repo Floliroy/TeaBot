@@ -67,6 +67,8 @@ bot.on('message', function (message) {
                 message.channel.send("Le plus beau !")
             }else if(message.mentions.users.firstKey(undefined) === "216919708560130048"){ //Coco
                 message.channel.send("Le plus fort !")
+            }else if(message.mentions.users.firstKey(undefined) === "468492284384509963"){ //Axelle
+                message.channel.send("La plus bonne !")
             }else if(message.mentions.users.firstKey(undefined) === "289974845721018368"){ //Reweaxs
                 message.channel.send("Le suisse")
             }else if(message.mentions.users.firstKey(undefined) === "272360638741741570"){ //Diego
