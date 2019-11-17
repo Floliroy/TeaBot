@@ -75,6 +75,8 @@ bot.on('message', function (message) {
                 message.channel.send("Le beauf ❤️")
             }else if(message.mentions.users.firstKey(undefined) === "230698146630598656"){ //Pata
                 message.channel.send("Le plus classe !")
+            }else if(message.mentions.users.firstKey(undefined) === "634330412881281054"){ //TheRealBot
+                message.channel.send("Qu'est-ce que tu veux ?")
             }else if(message.mentions.users.firstKey(undefined) === "311176545383219202"){ //Didou
                 message.channel.send("La plus bonne ❤️")
             }else if(message.mentions.users.firstKey(undefined) === "302898536356511745"){ //o4
