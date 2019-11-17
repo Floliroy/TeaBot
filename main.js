@@ -42,9 +42,7 @@ bot.on('message', function (message) {
             message.channel.send("sur gazon!")
         }
     }else if(texte === "gg"){
-        message.channel.send("EZ")
-    }else if(texte === "diego"){
-        message.channel.send("Le beauf")     
+        message.channel.send("EZ")   
     }else if(texte === "feu vert"){
         message.channel.send("La patte de l'expert")
     }else if(texte === "mdr" || texte === "lol"){
@@ -69,6 +67,8 @@ bot.on('message', function (message) {
                 message.channel.send("Le plus beau !")
             }else if(message.mentions.users.firstKey(undefined) === "216919708560130048"){ //Coco
                 message.channel.send("Le plus fort !")
+            }else if(message.mentions.users.firstKey(undefined) === "272360638741741570"){ //Diego
+                message.channel.send("Le beauf ❤️")
             }else if(message.mentions.users.firstKey(undefined) === "230698146630598656"){ //Pata
                 message.channel.send("Le plus classe !")
             }else if(message.mentions.users.firstKey(undefined) === "311176545383219202"){ //Didou
