@@ -66,7 +66,7 @@ bot.on('message', function (message) {
             if(message.mentions.users.firstKey(undefined) === "112632359207108608"){ //Flo
                 message.channel.send("Le plus beau !")
             }else if(message.mentions.users.firstKey(undefined) === "216919708560130048"){ //Coco
-                message.channel.send("Le plus fort !")
+                message.channel.send("Tag pas coco ça lui casse les couilles !")
             }else if(message.mentions.users.firstKey(undefined) === "468492284384509963"){ //Axelle
                 message.channel.send("La plus bonne !")
             }else if(message.mentions.users.firstKey(undefined) === "289974845721018368"){ //Reweaxs
@@ -74,7 +74,7 @@ bot.on('message', function (message) {
             }else if(message.mentions.users.firstKey(undefined) === "272360638741741570"){ //Diego
                 message.channel.send("Le beauf ❤️")
             }else if(message.mentions.users.firstKey(undefined) === "230698146630598656"){ //Pata
-                message.channel.send("Le plus classe !")
+                message.channel.send("Le plus fort !")
             }else if(message.mentions.users.firstKey(undefined) === "634330412881281054"){ //TheRealBot
                 message.channel.send("Qu'est-ce que tu veux ?")
             }else if(message.mentions.users.firstKey(undefined) === "311176545383219202"){ //Didou
