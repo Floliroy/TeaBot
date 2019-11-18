@@ -67,7 +67,7 @@ bot.on('message', function (message) {
         if (message.member.voiceChannel) {
             message.member.voiceChannel.join()
             .then(connection => {
-                const dispatcher = connection.playFile('/app/ntm.mp3')
+                const dispatcher = connection.playFile('./app/ntm.mp3')
                 dispatcher.on("end", end => {voiceChannel.leave()})
             })
         }
