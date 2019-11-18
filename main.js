@@ -66,7 +66,7 @@ bot.on('message', function (message) {
     }else if(texte === "test"){
         message.channel.send({embed: {
             color: 3447003,
-            description: "A very simple Embed!"
+            description: "A very simple Embed! <@230698146630598656> <@112632359207108608>"
         }})
     }else if(texte === "ok"){
         if(Math.random()<0.5){
