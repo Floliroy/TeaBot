@@ -23,9 +23,11 @@ Theses functions were not used anymore so i removed them from the code
 */
 
 //notre "main"
+const authUserId = ["112632359207108608", "230698146630598656", "216919708560130048"]
 bot.on('ready', function (evt) {
     logger.info("Running")
 })
+
 bot.on('message', function (message) {    
     var texte = message.content.toLowerCase();
     //comparaisons
@@ -49,12 +51,12 @@ bot.on('message', function (message) {
         message.channel.send("La patte de l'expert")
     }else if(texte === "!besch"){
         message.delete()
-        if(message.author.id === "112632359207108608" || message.author.id === "230698146630598656" || message.author.id === "216919708560130048"){
+        if(authUserId.includes(message.author.id)){
             message.channel.send("Apprends à écrire fdp")
         }
     }else if(texte === "!besch+"){
         message.delete()
-        if(message.author.id === "112632359207108608" || message.author.id === "230698146630598656" || message.author.id === "216919708560130048"){
+        if(authUserId.includes(message.author.id)){
             message.channel.send("Gros... Même o4 fait moins de fautes :worried:")
         }
     }else if(texte === "mdr" || texte === "lol"){
@@ -75,7 +77,7 @@ bot.on('message', function (message) {
             message.reply("nique ta mère avec ton tag everyone !")
         }else if(texte.includes("@here")){
             message.reply("nique ta mère avec ton tag here !")
-        }else if(texte.includes("bot") && message.author.id !== "112632359207108608" && message.author.id !== "230698146630598656" && message.author.id !== "216919708560130048"){
+        }else if(texte.includes("bot") && !authUserId.includes(message.author.id)){
             message.reply("d'où tu parles de moi fdp !")
         }else if(message.mentions.users.firstKey(undefined) === "216919708560130048"){ //Coco
                 message.channel.send("Tag pas Coco, ça lui casse les couilles !")
