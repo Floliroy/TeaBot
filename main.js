@@ -75,6 +75,17 @@ bot.on('message', function (message) {
         }else{
             message.channel.send("feur")
         }
+    }else if(texte === "miroir qui est la plus bonne" || texte === "miroir qui est la plus bonne?" || texte === "miroir qui est la plus bonne ?"){
+        var rand = Math.random()
+        if(rand<0.25){
+            message.channel.send("La plus bonne est <@287712199827521536>")//cécilia
+        }else if(rand<0.5){ 
+            message.channel.send("La plus bonne est <@348302437117067286>")//océane
+        }else if(rand<0.75){  
+            message.channel.send("La plus bonne est <@211533618177245188>")//shannel
+        }else{
+            message.channel.send("La plus bonne est <@468492284384509963>")//axelle
+        }       
     }else if(texte === "!besch"){
         message.delete()
         if(authUserId.includes(message.author.id)){
