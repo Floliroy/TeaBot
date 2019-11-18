@@ -64,7 +64,7 @@ bot.on('message', function (message) {
     if(messExact.has(texte)){
         message.channel.send(messExact.get(texte))
     }else if(texte === "test"){
-        message.channel.send("<@230698146630598656><@112632359207108608>" + {embed: {
+        message.reply({embed: {
             color: 3447003,
             description: "A very simple Embed!"
         }})
