@@ -40,6 +40,15 @@ messExact.set("m énerve pas", "je vais m'énerver")
 messExact.set("les produits laitiers", "sont nos amis pour la vie :musical_note:")
 messExact.set("les produits laitier",  "sont nos amis pour la vie :musical_note:")
 messExact.set("les produit laitier",   "sont nos amis pour la vie :musical_note:")
+const messByID = new Map()
+messByID.set("112632359207108608", "Le plus beau !") //Flo
+messByID.set("468492284384509963", "La plus bonne ! ❤️") //Axelle
+messByID.set("289974845721018368", "Le suisse") //Reweaxs
+messByID.set("272360638741741570", "Le beauf <:diego:587410993500520484>") //Diego
+messByID.set("230698146630598656", "Le plus fort !") // Pata
+messByID.set("634330412881281054", "Qu'est-ce que tu veux ?") //TheRealBot
+messByID.set("311176545383219202", "L'homme parfait") //Didou
+messByID.set("302898536356511745", "Le plus déco ...") //o4
 
 bot.on('message', function (message) {    
     var texte = message.content.toLowerCase();
@@ -94,22 +103,9 @@ bot.on('message', function (message) {
             message.reply("toi tg!")
         }else if(!message.content.includes(" ") && message.mentions.users.first(undefined) === message.mentions.users.last(undefined)){
             //on a un seul tag
-            if(message.mentions.users.firstKey(undefined) === "112632359207108608"){ //Flo
-                message.channel.send("Le plus beau !")
-            }else if(message.mentions.users.firstKey(undefined) === "468492284384509963"){ //Axelle
-                message.channel.send("La plus bonne ! ❤️")
-            }else if(message.mentions.users.firstKey(undefined) === "289974845721018368"){ //Reweaxs
-                message.channel.send("Le suisse")
-            }else if(message.mentions.users.firstKey(undefined) === "272360638741741570"){ //Diego
-                message.channel.send("Le beauf <:diego:587410993500520484>")
-            }else if(message.mentions.users.firstKey(undefined) === "230698146630598656"){ //Pata
-                message.channel.send("Le plus fort !")
-            }else if(message.mentions.users.firstKey(undefined) === "634330412881281054"){ //TheRealBot
-                message.channel.send("Qu'est-ce que tu veux ?")
-            }else if(message.mentions.users.firstKey(undefined) === "311176545383219202"){ //Didou
-                message.channel.send("L'homme parfait")
-            }else if(message.mentions.users.firstKey(undefined) === "302898536356511745"){ //o4
-                message.channel.send("Le plus déco ...")
+            var tagId = message.mentions.users.firstKey(undefined)
+            if(messByID.has(tagId)){
+                message.channel.send(messByID.get(tagId))
             }
         }
     }
