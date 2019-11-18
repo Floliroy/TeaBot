@@ -63,6 +63,15 @@ bot.on('message', function (message) {
     
     if(messExact.has(texte)){
         message.channel.send(messExact.get(texte))
+    }else if(texte === "!ntm"){
+        if (message.author.voiceChannel) {
+            message.author.voiceChannel.join()
+            .then(connection => {
+                const dispatcher = connection.playFile('/app/ntm.mp3')
+                dispatcher.on("end", end => {voiceChannel.leave()})
+            })
+        }
+    }
     }else if(texte === "ok"){
         if(Math.random()<0.5){
             message.channel.send("sur glace!")
