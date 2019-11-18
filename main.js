@@ -63,6 +63,11 @@ bot.on('message', function (message) {
     
     if(messExact.has(texte)){
         message.channel.send(messExact.get(texte))
+    }else if(texte === "test"){
+        message.channel.send({embed: {
+            color: 3447003,
+            description: "A very simple Embed!"
+        }})
     }else if(texte === "ok"){
         if(Math.random()<0.5){
             message.channel.send("sur glace!")
