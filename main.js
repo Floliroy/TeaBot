@@ -1,7 +1,6 @@
 require("dotenv").config();
 var Discord = require('discord.js')
 var logger = require('winston')
-const ytdl = require('ytdl-core')
 //configure le logger
 logger.remove(logger.transports.Console)
 logger.add(new logger.transports.Console, {
@@ -64,14 +63,6 @@ bot.on('message', function (message) {
     
     if(messExact.has(texte)){
         message.channel.send(messExact.get(texte))
-    }else if(texte === "!ntm"){
-        if (message.member.voiceChannel) {
-            message.member.voiceChannel.join()
-            .then(connection => {
-                const dispatcher = connection.play(ytdl("https://www.youtube.com/watch?v=pM2qjHTZdeI", { filter: "audioonly"}))
-                dispatcher.on("finish", () => {message.member.voiceChannel.leave()})
-            })
-        }
     }else if(texte === "ok"){
         if(Math.random()<0.5){
             message.channel.send("sur glace!")
