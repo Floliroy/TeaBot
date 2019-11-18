@@ -22,6 +22,15 @@ To see the previous implemented functions go to the initial commit
 Theses functions were not used anymore so i removed them from the code
 */
 
+function getRandomNumber(multiplicator){
+    var retour = Math.floor(Math.random() * 101) * multiplicator
+    if(retour > 100){
+        retour = 100
+    }
+    return retour
+}
+
+
 //notre "main"
 bot.on('ready', function (evt) {
     logger.info("Running")
@@ -63,6 +72,12 @@ bot.on('message', function (message) {
     
     if(messExact.has(texte)){
         message.channel.send(messExact.get(texte))
+    }else if(texte === "!gay"){
+        message.channel.send({embed: {
+            color: "#FF69B4",
+            title : "Test de titre",
+            description: "Tu es gay à " + getRandomNumber(1) +"%"
+        }})
     }else if(texte === "ok"){
         if(Math.random()<0.5){
             message.channel.send("sur glace!")
