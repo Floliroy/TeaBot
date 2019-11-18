@@ -23,7 +23,7 @@ Theses functions were not used anymore so i removed them from the code
 */
 
 function getRandomNumber(multiplicator){
-    var retour = Math.floor(Math.random() * 101) * multiplicator
+    var retour = Math.floor(Math.random() * 101 * multiplicator) 
     if(retour > 100){
         retour = 100
     }
@@ -73,11 +73,25 @@ bot.on('message', function (message) {
     if(messExact.has(texte)){
         message.channel.send(messExact.get(texte))
     }else if(texte === "!gay"){
-        message.channel.send({embed: {
-            color: 0xFF69B4,
-            title : "Gay Rate Machine",
-            description: "Tu es gay à " + getRandomNumber(1) +"%"
-        }})
+        if(message.author.id === "302898536356511745"){ //o4
+            message.channel.send({embed: {
+                color: 0xFF69B4,
+                title : "Gay Rate Machine",
+                description: "Tu es gay à " + getRandomNumber(1.2) +"%"
+            }})
+        }else if(message.author.id === "300246251834834945"){ //titouan
+            message.channel.send({embed: {
+                color: 0xFF69B4,
+                title : "Gay Rate Machine",
+                description: "Tu es gay à " + getRandomNumber(1.4) +"%"
+            }})
+        }else{
+            message.channel.send({embed: {
+                color: 0xFF69B4,
+                title : "Gay Rate Machine",
+                description: "Tu es gay à " + getRandomNumber(1) +"%"
+            }})
+        }        
     }else if(texte === "ok"){
         if(Math.random()<0.5){
             message.channel.send("sur glace!")
