@@ -42,7 +42,8 @@ messExact.set("les produits laitier",  "sont nos amis pour la vie :musical_note:
 messExact.set("les produit laitier",   "sont nos amis pour la vie :musical_note:")
 const messByID = new Map()
 messByID.set("112632359207108608", "Le plus beau ! :smirk:") //Flo
-messByID.set("211533618177245188", "La plus bonne ! ❤️") //Axelle
+messByID.set("211533618177245188", "La femme de l'homme parfait") //Rytoka
+messByID.set("468492284384509963", "La plus bonne ! ❤️") //Axelle
 messByID.set("289974845721018368", "Le suisse") //Reweaxs
 messByID.set("272360638741741570", "Le beauf <:diego:587410993500520484>") //Diego
 messByID.set("230698146630598656", "Le plus fort ! :open_mouth:") // Pata
