@@ -49,12 +49,12 @@ bot.on('message', function (message) {
         message.channel.send("La patte de l'expert")
     }else if(texte === "!besch"){
         message.delete()
-        if(message.author.id == "112632359207108608" || message.author.id == "230698146630598656" || message.author.id == "216919708560130048"){
+        if(message.author.id === "112632359207108608" || message.author.id === "230698146630598656" || message.author.id === "216919708560130048"){
             message.channel.send("Apprends à écrire fdp")
         }
     }else if(texte === "!besch+"){
         message.delete()
-        if(message.author.id == "112632359207108608" || message.author.id == "230698146630598656" || message.author.id == "216919708560130048"){
+        if(message.author.id === "112632359207108608" || message.author.id === "230698146630598656" || message.author.id === "216919708560130048"){
             message.channel.send("Gros... Même o4 fait moins de fautes :worried:")
         }
     }else if(texte === "mdr" || texte === "lol"){
@@ -75,8 +75,8 @@ bot.on('message', function (message) {
             message.reply("nique ta mère avec ton tag everyone !")
         }else if(texte.includes("@here")){
             message.reply("nique ta mère avec ton tag here !")
-        }else if(texte.includes("bot")){
-            message.reply("D'où tu parles de moi fdp !")
+        }else if(texte.includes("bot") && message.author.id !== "112632359207108608" && message.author.id !== "230698146630598656" && message.author.id !== "216919708560130048"){
+            message.reply("d'où tu parles de moi fdp !")
         }else if(message.mentions.users.firstKey(undefined) === "216919708560130048"){ //Coco
                 message.channel.send("Tag pas Coco, ça lui casse les couilles !")
         }else if((texte.includes("slt") || texte.includes("salut") || texte.includes("bonjour")) && message.author !== bot.user){
