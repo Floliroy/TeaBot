@@ -41,14 +41,15 @@ messExact.set("les produits laitiers", "sont nos amis pour la vie :musical_note:
 messExact.set("les produits laitier",  "sont nos amis pour la vie :musical_note:")
 messExact.set("les produit laitier",   "sont nos amis pour la vie :musical_note:")
 const messByID = new Map()
-messByID.set("112632359207108608", "Le plus beau !") //Flo
+messByID.set("112632359207108608", "Le plus beau ! :smirk:") //Flo
 messByID.set("468492284384509963", "La plus bonne ! ❤️") //Axelle
 messByID.set("289974845721018368", "Le suisse") //Reweaxs
 messByID.set("272360638741741570", "Le beauf <:diego:587410993500520484>") //Diego
-messByID.set("230698146630598656", "Le plus fort !") // Pata
-messByID.set("634330412881281054", "Qu'est-ce que tu veux ?") //TheRealBot
-messByID.set("311176545383219202", "L'homme parfait") //Didou
+messByID.set("230698146630598656", "Le plus fort ! :open_mouth:") // Pata
+messByID.set("634330412881281054", "Qu'est-ce que tu veux ? :unamused:") //TheRealBot
+messByID.set("311176545383219202", "L'homme parfait :heart_eyes:") //Didou
 messByID.set("302898536356511745", "Le plus déco ...") //o4
+messByID.set("348302437117067286", "On se capte dans 4 ans :smirk::stuck_out_tongue_winking_eye:") //Mady
 
 bot.on('message', function (message) {    
     var texte = message.content.toLowerCase();
@@ -83,6 +84,10 @@ bot.on('message', function (message) {
         if(authUserId.includes(message.author.id)){
             message.channel.send("Gros... Même o4 fait moins de fautes :worried:")
         }
+    }else if(texte === "simple" && message.author !== bot.user){
+        message.channel.send("basique")
+    }else if(texte === "basique" && message.author !== bot.user){
+        message.channel.send("simple")
     }else{
         //includes
         if(texte.includes("@everyone")){
