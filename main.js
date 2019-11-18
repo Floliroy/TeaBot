@@ -43,6 +43,8 @@ bot.on('message', function (message) {
         }
     }else if(texte === "gg"){
         message.channel.send("EZ")   
+    }else if(texte === "jtm"){
+        message.channel.send("Moi aussi je m'aime...") 
     }else if(texte === "feu vert"){
         message.channel.send("La patte de l'expert")
     }else if(texte === "!besch"){
