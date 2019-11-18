@@ -80,7 +80,7 @@ bot.on('message', function (message) {
             message.reply("nique ta mère avec ton tag everyone !")
         }else if(texte.includes("@here")){
             message.reply("nique ta mère avec ton tag here !")
-        }else if(texte.includes("bot") && !authUserId.includes(message.author.id)){
+        }else if(texte.includes(" bot ") && !authUserId.includes(message.author.id)){
             message.reply("d'où tu parles de moi fdp !")
         }else if(message.mentions.users.firstKey(undefined) === "216919708560130048"){ //Coco
                 message.channel.send("Tag pas Coco, ça lui casse les couilles !")
