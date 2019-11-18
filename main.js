@@ -51,10 +51,11 @@ bot.on('message', function (message) {
         message.delete()
         if(message.author.id == "112632359207108608" || message.author.id == "230698146630598656" || message.author.id == "216919708560130048"){
             message.channel.send("Apprends à écrire fdp")
+        }
     }else if(texte === "!besch+"){
         message.delete()
         if(message.author.id == "112632359207108608" || message.author.id == "230698146630598656" || message.author.id == "216919708560130048"){
-            message.channel.send("Gros...même o4 fait moins de fautes --'")
+            message.channel.send("Gros... Même o4 fait moins de fautes :worried:")
         }
     }else if(texte === "mdr" || texte === "lol"){
         message.channel.send("OH MOI AUSSI CA M'A TUÉ JPP ! XD")
@@ -66,8 +67,8 @@ bot.on('message', function (message) {
         }
     }else if(texte === "m'énerve pas" || texte === "m'enerve pas" || texte === "m énerve pas"){
         message.channel.send("je vais m'énerver")
-   }else if(texte === "les produits laitiers" || texte === "les produits laitier" || texte === "les produit laitier"){
-        message.channel.send("sont nos amis pour la vie")
+    }else if(texte === "les produits laitiers" || texte === "les produits laitier" || texte === "les produit laitier"){
+        message.channel.send("sont nos amis pour la vie ... :musical_note: ")
     }else{
         //includes
         if(texte.includes("@everyone")){
