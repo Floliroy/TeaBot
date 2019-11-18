@@ -71,7 +71,6 @@ bot.on('message', function (message) {
                 dispatcher.on("end", end => {voiceChannel.leave()})
             })
         }
-    }
     }else if(texte === "ok"){
         if(Math.random()<0.5){
             message.channel.send("sur glace!")
