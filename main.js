@@ -23,10 +23,23 @@ Theses functions were not used anymore so i removed them from the code
 */
 
 //notre "main"
-const authUserId = ["112632359207108608", "230698146630598656", "216919708560130048"]
 bot.on('ready', function (evt) {
     logger.info("Running")
 })
+
+const authUserId = ["112632359207108608", "230698146630598656", "216919708560130048"]
+const messExact = new Map()
+messExact.set("gg", "EZ")
+messExact.set("jtm", "Moi aussi je m'aime...")
+messExact.set("feu vert", "La patte de l'expert")
+messExact.set("mdr", "OH MOI AUSSI CA M'A TUÉ JPP ! :rofl:")
+messExact.set("lol", "OH MOI AUSSI CA M'A TUÉ JPP ! :rofl:")
+messExact.set("m'énerve pas", "je vais m'énerver")
+messExact.set("m'enerve pas", "je vais m'énerver")
+messExact.set("m énerve pas", "je vais m'énerver")
+messExact.set("les produits laitiers", "sont nos amis pour la vie :musical_note:")
+messExact.set("les produits laitier",  "sont nos amis pour la vie :musical_note:")
+messExact.set("les produit laitier",   "sont nos amis pour la vie :musical_note:")
 
 bot.on('message', function (message) {    
     var texte = message.content.toLowerCase();
@@ -37,18 +50,20 @@ bot.on('message', function (message) {
         .then(() => message.react("0️⃣"))
     }
     
-    if(texte === "ok"){
+    if(messExact.has(texte)){
+        message.channel.send(messExact.get(texte))
+    }else if(texte === "ok"){
         if(Math.random()<0.5){
             message.channel.send("sur glace!")
         }else{
             message.channel.send("sur gazon!")
         }
-    }else if(texte === "gg"){
-        message.channel.send("EZ")   
-    }else if(texte === "jtm"){
-        message.channel.send("Moi aussi je m'aime...") 
-    }else if(texte === "feu vert"){
-        message.channel.send("La patte de l'expert")
+    }else if(texte === "quoi" || texte === "quoi?" || texte === "quoi ?"){
+        if(Math.random()<0.5){
+            message.channel.send("T'es de la police ?")
+        }else{
+            message.channel.send("feur")
+        }
     }else if(texte === "!besch"){
         message.delete()
         if(authUserId.includes(message.author.id)){
@@ -59,18 +74,6 @@ bot.on('message', function (message) {
         if(authUserId.includes(message.author.id)){
             message.channel.send("Gros... Même o4 fait moins de fautes :worried:")
         }
-    }else if(texte === "mdr" || texte === "lol"){
-        message.channel.send("OH MOI AUSSI CA M'A TUÉ JPP ! XD")
-    }else if(texte === "quoi" || texte === "quoi?" || texte === "quoi ?"){
-        if(Math.random()<0.5){
-            message.channel.send("T'es de la police ?")
-        }else{
-            message.channel.send("feur")
-        }
-    }else if(texte === "m'énerve pas" || texte === "m'enerve pas" || texte === "m énerve pas"){
-        message.channel.send("je vais m'énerver")
-    }else if(texte === "les produits laitiers" || texte === "les produits laitier" || texte === "les produit laitier"){
-        message.channel.send("sont nos amis pour la vie ... :musical_note: ")
     }else{
         //includes
         if(texte.includes("@everyone")){
