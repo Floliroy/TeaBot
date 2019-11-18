@@ -62,7 +62,7 @@ bot.on('message', function (message) {
             message.reply("nique ta mère avec ton tag everyone !")
         }else if(texte.includes("@here")){
             message.reply("nique ta mère avec ton tag here !")
-        }else if(message.mentions.users.findKey("216919708560130048") != undefined){ //Coco
+        }else if(message.mentions.users.findKey("216919708560130048") != null){ //Coco
                 message.channel.send("Tag pas Coco, ça lui casse les couilles !")
         }else if((texte.includes("slt") || texte.includes("salut") || texte.includes("bonjour")) && message.author !== bot.user){
             message.channel.send("slt mon bro :wave:")
