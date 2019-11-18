@@ -53,7 +53,11 @@ bot.on('message', function (message) {
     }else if(texte === "mdr" || texte === "lol"){
         message.channel.send("OH MOI AUSSI CA M'A TUÉ JPP ! XD")
     }else if(texte === "quoi" || texte === "quoi?" || texte === "quoi ?"){
-        message.channel.send("T'es de la police ?")
+        if(Math.random()<0.5){
+            message.channel.send("T'es de la police ?")
+        }else{
+            message.channel.send("feur")
+        }
     }else if(texte === "m'énerve pas" || texte === "m'enerve pas" || texte === "m énerve pas"){
         message.channel.send("je vais m'énerver")
     }else{
