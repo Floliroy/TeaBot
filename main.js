@@ -74,8 +74,8 @@ bot.on('message', function (message) {
         message.channel.send(messExact.get(texte))
     }else if(texte === "!gay"){
         message.channel.send({embed: {
-            color: 2550127,
-            title : "Test de titre",
+            color: 001100110,
+            title : "Gay Rate Machine",
             description: "Tu es gay à " + getRandomNumber(1) +"%"
         }})
     }else if(texte === "ok"){
