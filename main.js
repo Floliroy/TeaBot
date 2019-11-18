@@ -106,7 +106,7 @@ bot.on('message', function (message) {
             message.reply("nique ta mère avec ton tag everyone !")
         }else if(texte.includes("@here")){
             message.reply("nique ta mère avec ton tag here !")
-        }else if(texte.includes(" bot ") || texte === "bot"){
+        }else if(texte.includes(" bot ") || texte === "bot" || texte.startsWith("bot ") || texte.endsWith(" bot")){
             if(authUserId.includes(message.author.id)){
                 message.reply("tu parles de moi bg ?")
             }else{
