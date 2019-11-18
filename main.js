@@ -1,6 +1,7 @@
 require("dotenv").config();
 var Discord = require('discord.js')
 var logger = require('winston')
+const ytdl = require('ytdl-core')
 //configure le logger
 logger.remove(logger.transports.Console)
 logger.add(new logger.transports.Console, {
@@ -67,8 +68,8 @@ bot.on('message', function (message) {
         if (message.member.voiceChannel) {
             message.member.voiceChannel.join()
             .then(connection => {
-                const dispatcher = connection.playFile('./app/ntm.mp3')
-                dispatcher.on("end", end => {voiceChannel.leave()})
+                const dispatcher = connection.play(ytdl("https://www.youtube.com/watch?v=pM2qjHTZdeI", { filter: "audioonly"}))
+                dispatcher.on("finish", () => {message.member.voiceChannel.leave()})
             })
         }
     }else if(texte === "ok"){
