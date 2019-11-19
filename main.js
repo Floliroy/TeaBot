@@ -85,7 +85,7 @@ bot.on('message', function (message) {
         .then(() => message.react("➖"))
         .then(() => message.react("0️⃣"))
     }
-    if(message.author.id === "112632359207108608" && doesStringContainList(texte, rapportList, message) === 1){
+    if(message.author.id === "348302437117067286" && doesStringContainList(texte, rapportList, message) === 1){
         message.react("🍆")
     }
     
