@@ -133,10 +133,10 @@ bot.on('message', function (message) {
         }else{
             tag = "<@468492284384509963>"//axelle
         } 
-        channel.send({embed: {
+        message.channel.send({embed: {
             color: 0x7FFF00,
-            title : "Miroir miroir... Dis-moi qui est la plus bonne",
-            description: "La plus bonne est " + tag
+            title : "Miroir miroir...\nDis-moi qui est la plus bonne",
+            description: "La plus bonne est " + tag + " !"
         }})
     }else if(texte === "!besch"){
         message.delete()
