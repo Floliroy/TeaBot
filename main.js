@@ -35,7 +35,7 @@ function sendRandomNumber(max, multiplicator, hexColor, titre, texte, channel){
     }})
 }
 
-function doesStringContainList(text, list, message){    
+function doesStringContainList(text, list){    
     var retour = 0
     list.forEach(function(element){     
         if(text.includes(element)){
@@ -85,7 +85,7 @@ bot.on('message', function (message) {
         .then(() => message.react("➖"))
         .then(() => message.react("0️⃣"))
     }
-    if(message.author.id === "348302437117067286" && doesStringContainList(texte, rapportList, message) === 1){
+    if(message.author.id === "348302437117067286" && doesStringContainList(texte, rapportList) === 1){
         message.react("🍆")
     }
     
