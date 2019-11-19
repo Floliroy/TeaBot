@@ -80,11 +80,13 @@ bot.on('message', function (message) {
     }else if(texte.startsWith("!gay")){
         var userId = message.author.id
         var textToSend = "<@" + userId +">, tu es gay à "
-        if(texte.includes(" ")){
-            var args = texte.split(" ")
-            if(args[1].startsWith("@")){
+        if(texte.includes(' ')){
+            message.channel.send("test")
+            var args = texte.split(' ')
+            if(args[1].startsWith('@')){
                 userId = message.mentions.users.firstKey(undefined)
                 textToSend = "<@" + userId +"> est gay à "
+                message.channel.send("test2")
             }
         }
         var multiplicator = 1
