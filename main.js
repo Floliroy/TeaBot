@@ -121,17 +121,23 @@ bot.on('message', function (message) {
         }else{
             message.channel.send("feur")
         }
-    }else if(texte === "miroir qui est la plus bonne" || texte === "miroir qui est la plus bonne?" || texte === "miroir qui est la plus bonne ?"){
+    }else if(texte === "!miroir"){
         var rand = Math.random()
+        var tag
         if(rand<0.25){
-            message.channel.send("La plus bonne est <@287712199827521536>")//cécilia
+            tag = "<@287712199827521536>" //cécilia
         }else if(rand<0.5){ 
-            message.channel.send("La plus bonne est <@348302437117067286>")//océane
+            tag = "<@348302437117067286>"//océane
         }else if(rand<0.75){  
-            message.channel.send("La plus bonne est <@211533618177245188>")//shannel
+            tag = "<@211533618177245188>"//shannel
         }else{
-            message.channel.send("La plus bonne est <@468492284384509963>")//axelle
-        }       
+            tag = "<@468492284384509963>"//axelle
+        } 
+        channel.send({embed: {
+            color: 0x7FFF00,
+            title : "Miroir miroir...\nDis-moi qui est la plus bonne",
+            description: "La plus bonne est " + tag
+        }})
     }else if(texte === "!besch"){
         message.delete()
         if(authUserId.includes(message.author.id)){
