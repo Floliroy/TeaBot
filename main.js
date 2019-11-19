@@ -44,6 +44,7 @@ bot.on('ready', function (evt) {
 const authUserId = ["112632359207108608", "230698146630598656", "216919708560130048"]
 const messExact = new Map()
 messExact.set("gg", "EZ")
+messExact.set("prozis", "**ALDE10**")
 messExact.set("jtm", "Moi aussi je m'aime...")
 messExact.set("feu vert", "La patte de l'expert")
 messExact.set("mdr", "OH MOI AUSSI CA M'A TUÉ JPP ! :rofl:")
