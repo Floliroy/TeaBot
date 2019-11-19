@@ -78,15 +78,24 @@ bot.on('message', function (message) {
     if(messExact.has(texte)){
         message.channel.send(messExact.get(texte))
     }else if(texte === "!gay"){
-        if(message.author.id === "302898536356511745"){ //o4
-            sendRandomNumber(100, 1.2, 0xFF69B4, "Gay Rate Machine", "Tu es gay à ", message.channel)
-        }else if(message.author.id === "300246251834834945"){ //titouan
-            sendRandomNumber(100, 1.4, 0xFF69B4, "Gay Rate Machine", "Tu es gay à ", message.channel)
-        }else if(authUserId.includes(message.author.id)){
-            sendRandomNumber(100, 0.8, 0xFF69B4, "Gay Rate Machine", "Tu es gay à ", message.channel)
-        }else{
-            sendRandomNumber(100, 1, 0xFF69B4, "Gay Rate Machine", "Tu es gay à ", message.channel)
-        }        
+        var userId = message.author.id
+        var textToSend = "<@" + userId +">, tu es gay à "
+        if(texte.includes(" ")){
+            var args = message.content.split(' ')
+            if(args[1].startsWith("@")){
+                userId = message.mentions.users.firstKey(undefined)
+                textToSend = "<@" + userId +"> est gay à "
+            }
+        }
+        var multiplicator = 1
+        if(userId === "302898536356511745"){ //o4
+            multiplicator = 1.2
+        }else if(userId === "300246251834834945"){ //titouan
+            multiplicator = 1.4
+        }else if(authUserId.includes(userId)){
+            multiplicator = 0.8
+        }       
+        sendRandomNumber(100, multiplicator, 0xFF69B4, "Gay Rate Machine", textToSend, message.channel)
     }else if(texte === "ok"){
         if(Math.random()<0.5){
             message.channel.send("sur glace!")
