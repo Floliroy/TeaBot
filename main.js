@@ -30,7 +30,7 @@ function sendRandomNumber(max, multiplicator, hexColor, titre, texte, channel){
     
     return channel.send({embed: {
         color: hexColor,
-        title : "Gay Rate Machine",
+        title : titre,
         description: texte + valeur +"%"
     }})
 }
@@ -80,14 +80,11 @@ bot.on('message', function (message) {
     }else if(texte.startsWith("!gay")){
         var userId = message.author.id
         var textToSend = "<@" + userId +">, tu es gay à "
-        if(texte.includes(' ')){
+        if(texte.includes(" ") && message.mentions.users.firstKey(undefined)!= null){
             message.channel.send("test")
-            var args = texte.split(' ')
-            if(args[1].startsWith('@')){
-                userId = message.mentions.users.firstKey(undefined)
-                textToSend = "<@" + userId +"> est gay à "
-                message.channel.send("test2")
-            }
+            var args = texte.split(" ")
+            userId = message.mentions.users.firstKey(undefined)
+            textToSend = "<@" + userId +"> est gay à "
         }
         var multiplicator = 1
         if(userId === "302898536356511745"){ //o4
