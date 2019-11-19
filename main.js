@@ -35,6 +35,14 @@ function sendRandomNumber(max, multiplicator, hexColor, titre, texte, channel){
     }})
 }
 
+function doesStringContainList(text, list){
+    list.forEach(function(element){
+        if(text.includes(element)){
+            return true
+        }
+    })
+    return false
+}
 
 //notre "main"
 bot.on('ready', function (evt) {
@@ -74,6 +82,11 @@ bot.on('message', function (message) {
         message.react("3️⃣")
         .then(() => message.react("➖"))
         .then(() => message.react("0️⃣"))
+    }
+    if(message.author.id === "112632359207108608" && doesStringContainList(texte, //id to modif to oceane
+    ["baise","baisé","sexe","suce","sucé","penis","pénis","gay","lesbien","chatte","vagin",
+    "69","nude","bdsm","bz","fesse","boob","bite","cul","gasm","<3","porno","zizi","jtm"])){
+        message.react("🍆")
     }
     
     if(messExact.has(texte)){
