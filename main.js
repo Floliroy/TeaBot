@@ -24,12 +24,12 @@ Theses functions were not used anymore so i removed them from the code
 
 function sendRandomNumber(max, multiplicator, hexColor, titre, texte, channel){
     var valeur = Math.floor(Math.random() * (max+1) * multiplicator) 
-    if(retour > max){
+    if(valeur > max){
         valeur = max
     }
     
     return channel.send({embed: {
-        color: 0xFF69B4,
+        color: hexColor,
         title : "Gay Rate Machine",
         description: texte + valeur +"%"
     }})
