@@ -135,7 +135,7 @@ bot.on('message', function (message) {
         } 
         channel.send({embed: {
             color: 0x7FFF00,
-            title : "Miroir miroir...\nDis-moi qui est la plus bonne",
+            title : "Miroir miroir... Dis-moi qui est la plus bonne",
             description: "La plus bonne est " + tag
         }})
     }else if(texte === "!besch"){
