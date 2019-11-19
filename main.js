@@ -22,19 +22,17 @@ To see the previous implemented functions go to the initial commit
 Theses functions were not used anymore so i removed them from the code
 */
 
-function sendRandomNumber(max, multiplicator, hexColor, titre, texte){
+function sendRandomNumber(max, multiplicator, hexColor, titre, texte, channel){
     var valeur = Math.floor(Math.random() * (max+1) * multiplicator) 
     if(retour > max){
         valeur = max
     }
     
-    message.channel.send({embed: {
+    return channel.send({embed: {
         color: 0xFF69B4,
         title : "Gay Rate Machine",
         description: texte + valeur +"%"
     }})
-    
-    return valeur
 }
 
 
@@ -81,13 +79,13 @@ bot.on('message', function (message) {
         message.channel.send(messExact.get(texte))
     }else if(texte === "!gay"){
         if(message.author.id === "302898536356511745"){ //o4
-            sendRandomNumber(100, 1.2, 0xFF69B4, "Gay Rate Machine", "Tu es gay à ")
+            sendRandomNumber(100, 1.2, 0xFF69B4, "Gay Rate Machine", "Tu es gay à ", message.channel)
         }else if(message.author.id === "300246251834834945"){ //titouan
-            sendRandomNumber(100, 1.4, 0xFF69B4, "Gay Rate Machine", "Tu es gay à ")
+            sendRandomNumber(100, 1.4, 0xFF69B4, "Gay Rate Machine", "Tu es gay à ", message.channel)
         }else if(authUserId.includes(message.author.id)){
-            sendRandomNumber(100, 0.8, 0xFF69B4, "Gay Rate Machine", "Tu es gay à ")
+            sendRandomNumber(100, 0.8, 0xFF69B4, "Gay Rate Machine", "Tu es gay à ", message.channel)
         }else{
-            sendRandomNumber(100, 1, 0xFF69B4, "Gay Rate Machine", "Tu es gay à ")
+            sendRandomNumber(100, 1, 0xFF69B4, "Gay Rate Machine", "Tu es gay à ", message.channel)
         }        
     }else if(texte === "ok"){
         if(Math.random()<0.5){
