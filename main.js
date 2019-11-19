@@ -74,7 +74,7 @@ messByID.set("230698146630598656", "Le plus fort ! :open_mouth:") // Pata
 messByID.set("634330412881281054", "Qu'est-ce que tu veux ? :unamused:") //TheRealBot
 messByID.set("311176545383219202", "L'homme parfait :heart_eyes:") //Didou
 messByID.set("302898536356511745", "Le plus déco ...") //o4
-messByID.set("348302437117067286", "On se capte dans 3 ans :smirk: :stuck_out_tongue_winking_eye: :eggplant:") //Mady
+messByID.set("348302437117067286", "On se capte dans 2 ans :smirk: :stuck_out_tongue_winking_eye: :eggplant:") //Mady
 const rapportList = ["baise","baisé","sex","suce","sucé","penis","pénis","gay","lesbien","chatte","vagin","69","nude","bdsm","bz","fesse","boob","bite","cul","gasm","<3","porno","zizi","jtm"]
 
 bot.on('message', function (message) {    
