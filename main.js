@@ -81,7 +81,6 @@ bot.on('message', function (message) {
         var userId = message.author.id
         var textToSend = "<@" + userId +">, tu es gay à "
         if(texte.includes(" ") && message.mentions.users.firstKey(undefined)!= null){
-            message.channel.send("test")
             var args = texte.split(" ")
             userId = message.mentions.users.firstKey(undefined)
             textToSend = "<@" + userId +"> est gay à "
@@ -95,6 +94,21 @@ bot.on('message', function (message) {
             multiplicator = 0.8
         }       
         sendRandomNumber(100, multiplicator, 0xFF69B4, "Gay Rate Machine", textToSend, message.channel)
+    }else if(texte.startsWith("!waifu")){
+        var userId = message.author.id
+        var textToSend = "<@" + userId +">, tu es une waifu à "
+        if(texte.includes(" ") && message.mentions.users.firstKey(undefined)!= null){
+            var args = texte.split(" ")
+            userId = message.mentions.users.firstKey(undefined)
+            textToSend = "<@" + userId +"> est une waifu à "
+        }
+        var multiplicator = 1
+        if(userId === "300246251834834945"){ //titouan
+            multiplicator = 0.6
+        }else if(authUserId.includes(userId)){
+            multiplicator = 1.3
+        }       
+        sendRandomNumber(100, multiplicator, 0x00CED1, "Waifu Power ❤️", textToSend, message.channel)
     }else if(texte === "ok"){
         if(Math.random()<0.5){
             message.channel.send("sur glace!")
