@@ -35,12 +35,17 @@ function sendRandomNumber(max, multiplicator, hexColor, titre, texte, channel){
     }})
 }
 
-function doesStringContainList(text, list){
-    list.forEach(function(element){
+function doesStringContainList(text, list, message){    
+    message.reply("enter")
+    list.forEach(function(element){        
+        message.reply("each")
         if(text.includes(element)){
+            message.reply("ok")
             return true
         }
     })
+    
+    message.reply("not ok")
     return false
 }
 
@@ -84,8 +89,7 @@ bot.on('message', function (message) {
         .then(() => message.react("➖"))
         .then(() => message.react("0️⃣"))
     }
-    if(/*message.author.id === "348302437117067286" && */doesStringContainList(texte, rapportList)){
-        message.reply("test")
+    if(/*message.author.id === "348302437117067286" && */doesStringContainList(texte, rapportList, message)){
         message.react("🍆")
     }
     
