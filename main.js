@@ -77,7 +77,7 @@ bot.on('message', function (message) {
     
     if(messExact.has(texte)){
         message.channel.send(messExact.get(texte))
-    }else if(texte === "!gay"){
+    }else if(texte.startsWith("!gay")){
         var userId = message.author.id
         var textToSend = "<@" + userId +">, tu es gay à "
         if(texte.includes(" ")){
