@@ -81,7 +81,7 @@ bot.on('message', function (message) {
         var userId = message.author.id
         var textToSend = "<@" + userId +">, tu es gay à "
         if(texte.includes(" ")){
-            var args = message.content.split(' ')
+            var args = texte.split(" ")
             if(args[1].startsWith("@")){
                 userId = message.mentions.users.firstKey(undefined)
                 textToSend = "<@" + userId +"> est gay à "
