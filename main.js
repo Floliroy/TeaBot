@@ -109,6 +109,26 @@ bot.on('message', function (message) {
             multiplicator = 1.3
         }       
         sendRandomNumber(100, multiplicator, 0x00CED1, "Waifu Power ❤️", textToSend, message.channel)
+    }else if(texte.startsWith("!penis")){
+        var userId = message.author.id
+        var textToSend = "Voici la taille de ton pénis, <@" + userId +"> :\n"
+        if(texte.includes(" ") && message.mentions.users.firstKey(undefined)!= null){
+            var args = texte.split(" ")
+            userId = message.mentions.users.firstKey(undefined)
+            textToSend = "Voici la taille du pénis de <@" + userId +"> :\n"
+        }
+        var cpt = Math.floor(Math.random() * 20) + 1
+        textToSend += "8"
+        for (var i=1; i < cpt; i++) {
+          textToSend += "="
+        }
+        textToSend += "D"
+        
+        message.channel.send({embed: {
+            color: 0xFF7F50,
+            title : "Ferrara's Machine",
+            description: textToSend
+        }})
     }else if(texte === "ok"){
         if(Math.random()<0.5){
             message.channel.send("sur glace!")
