@@ -64,7 +64,7 @@ messByID.set("230698146630598656", "Le plus fort ! :open_mouth:") // Pata
 messByID.set("634330412881281054", "Qu'est-ce que tu veux ? :unamused:") //TheRealBot
 messByID.set("311176545383219202", "L'homme parfait :heart_eyes:") //Didou
 messByID.set("302898536356511745", "Le plus déco ...") //o4
-messByID.set("348302437117067286", "On se capte dans 3 ans :smirk::stuck_out_tongue_winking_eye:") //Mady
+messByID.set("348302437117067286", "On se capte dans 3 ans :smirk: :stuck_out_tongue_winking_eye: :eggplant:") //Mady
 
 bot.on('message', function (message) {    
     var texte = message.content.toLowerCase();
