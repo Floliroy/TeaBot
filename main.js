@@ -1,6 +1,6 @@
 require("dotenv").config();
-var Discord = require('discord.js')
-var logger = require('winston')
+const Discord = require('discord.js')
+const logger = require('winston')
 //configure le logger
 logger.remove(logger.transports.Console)
 logger.add(new logger.transports.Console, {
@@ -8,7 +8,7 @@ logger.add(new logger.transports.Console, {
 })
 logger.level = "debug"
 //Initialise le bot discord
-var bot = new Discord.Client({
+const bot = new Discord.Client({
    token: process.env.TOKEN,
    autorun: true
 })
@@ -23,7 +23,7 @@ Theses functions were not used anymore so i removed them from the code
 */
 
 function sendRandomNumber(max, multiplicator, hexColor, titre, texte, channel){
-    var valeur = Math.floor(Math.random() * (max+1) * multiplicator) 
+    let valeur = Math.floor(Math.random() * (max+1) * multiplicator) 
     if(valeur > max){
         valeur = max
     }
@@ -36,7 +36,7 @@ function sendRandomNumber(max, multiplicator, hexColor, titre, texte, channel){
 }
 
 function doesStringContainList(text, list){    
-    var retour = 0
+    let retour = 0
     list.forEach(function(element){     
         if(text.includes(element)){
             retour = 1
@@ -192,7 +192,7 @@ bot.on('message', function (message) {
         
         const cpt = Math.floor(Math.random() * 17) + 1
         textToSend += "8"
-        for (var i=1; i <= cpt; i++) {
+        for (let i=1; i <= cpt; i++) {
           textToSend += "="
         }
         textToSend += "D"
