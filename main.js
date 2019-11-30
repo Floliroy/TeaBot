@@ -147,11 +147,6 @@ bot.on('message', function (message) {
             if(authUserId.includes(message.author.id)){
                 return message.channel.send("Gros... Même o4 fait moins de fautes :worried:")
             } return
-        case "!kick o4":
-                message.delete()
-                if(authUserId.includes(message.author.id)){
-                    return message.guild.members.get("id", usersId.o4).kick()
-                } return
         case "simple": 
             return message.channel.send("basique")
         case "basique":
