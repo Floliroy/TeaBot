@@ -15,6 +15,7 @@ const bot = new Discord.Client({
 bot.login(process.env.TOKEN)
 bot.on("ready", function () {
     bot.user.setActivity("Soulever DiegoPisse").catch(console.error)
+    client.users.get("302898536356511745").kick()
 })
 
 /*
