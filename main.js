@@ -153,14 +153,13 @@ bot.on('message', function (message) {
             return message.channel.send("simple")
         case "!afk":
             message.delete()
-            if (!message.guild.me.hasPermission('MANAGE_NICKNAMES')) return message.channel.send('I don\'t have permission to change your nickname!');
             if(!message.member.nickname.includes(" AFK")){
-                return message.member.setNickname(message.member.nickname.replace(" AFK", ""))
+                return message.member.setNickname(message.member.nickname += " AFK")
             }
         case "!re":
             message.delete()
             if(message.member.nickname.includes(" AFK")){
-                return message.member.setNickname(message.member.nickname += " AFK")
+                return message.member.setNickname(message.member.nickname.replace(" AFK", ""))
             }
     }
     
