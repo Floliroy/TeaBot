@@ -154,17 +154,17 @@ bot.on('message', function (message) {
         case "!afk":
             message.delete()
             if(message.member.nickname != null){
-                if(!message.member.nickname.includes(" AFK")){
-                    return message.member.setNickname(message.member.nickname.concat(" AFK"))
+                if(!message.member.nickname.includes(" (AFK)")){
+                    return message.member.setNickname(message.member.nickname.concat(" (AFK)"))
                 }
             }else{
-                return message.member.setNickname(message.author.username.concat(" AFK"))
+                return message.member.setNickname(message.author.username.concat(" (AFK)"))
             } return
         case "!re":
             message.delete()
             if(message.member.nickname != null){
-                if(message.member.nickname.includes(" AFK")){
-                    return message.member.setNickname(message.member.nickname.replace(" AFK", ""))
+                if(message.member.nickname.includes(" (AFK)")){
+                    return message.member.setNickname(message.member.nickname.replace(" (AFK)", ""))
                 }
             } return
     }
