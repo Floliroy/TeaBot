@@ -155,10 +155,10 @@ bot.on('message', function (message) {
             message.delete()
             if(message.member.nickname != null){
                 if(!message.member.nickname.includes(" AFK")){
-                    return message.member.setNickname(message.member.nickname += " AFK")
+                    return message.member.setNickname(message.member.nickname.replace(" AFK", "") += " AFK")
                 }
             }else{
-                return message.member.setNickname(message.author.username += " AFK")
+                return message.member.setNickname(message.author.username.replace(" AFK", "") += " AFK")
             } return
         case "!re":
             message.delete()
