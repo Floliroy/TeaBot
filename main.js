@@ -158,7 +158,7 @@ bot.on('message', function (message) {
                     return message.member.setNickname(message.member.nickname.replace(" AFK", "") += " AFK")
                 }
             }else{
-                return message.member.setNickname(message.author.username.replace(" AFK", "") += " AFK")
+                return message.member.setNickname(message.author.username += " AFK")
             } return
         case "!re":
             message.delete()
