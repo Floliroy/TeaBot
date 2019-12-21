@@ -151,6 +151,16 @@ bot.on('message', function (message) {
             return message.channel.send("basique")
         case "basique":
             return message.channel.send("simple")
+        case "!afk":
+            message.delete()
+            if(!message.author.username.includes(" AFK")){
+                message.author.setNickname(message.author.username.replace(" AFK", ""))
+            }
+        case "!re":
+            message.delete()
+            if(message.author.username.includes(" AFK")){
+                message.author.setNickname(message.author.username += " AFK")
+            }
     }
     
     if(texte.startsWith("!gay")){
