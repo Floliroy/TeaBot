@@ -270,7 +270,7 @@ bot.on('message', function (message) {
     if(!authUserId.includes(message.author.id)){return}
     let jour, matiere, description, imageURL, lien
 
-    const sheet;
+    let sheet;
 
     async.series([
         function setAuth(step) {      
