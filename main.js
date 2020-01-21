@@ -270,15 +270,23 @@ bot.on('message', function (message) {
     let jour, matiere, description, imageURL, lien
 
     doc.useServiceAccountAuth({client_email: process.env.GOOGLE_EMAIL, private_key: process.env.GOOGLE_TOKEN}, function(err) {
-        doc.getRows(1, {offset :1, limit:5} ,function(err, rows) {
+        const option = {
+            'min-row': 2,
+            'max-row': 2,
+            'min-col': 1,
+            'max-col': 5,
+            'return-empty': true,
+        }
+
+        doc.getCells(1, options,function(err, cells) {
             if(err){
                 message.reply("erreur")
             }
-            jour = rows[0]
-            matiere = rows[1]
-            description = rows[2]
-            imageURL = rows[3]
-            lien = rows[4]
+            jour = cells[0]
+            matiere = cells[1]
+            description = cells[2]
+            imageURL = cells[3]
+            lien = cells[4]
         })
     })
 
