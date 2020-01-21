@@ -270,7 +270,10 @@ bot.on('message', function (message) {
     let jour, matiere, description, imageURL, lien
 
     doc.useServiceAccountAuth({client_email: process.env.GOOGLE_EMAIL, private_key: process.env.GOOGLE_TOKEN}, function(err) {
-        doc.getRows(1, {offset :1, limit:2} ,function(err, rows) {
+        doc.getRows(1, {offset :1, limit:5} ,function(err, rows) {
+            if(err){
+                message.reply("erreur")
+            }
             jour = rows[0]
             matiere = rows[1]
             description = rows[2]
