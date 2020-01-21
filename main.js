@@ -285,7 +285,7 @@ bot.on('message', function (message) {
         })
     })
 
-    sheet.getCells(1, options, function(err, cells) {
+    sheet.getCells(options, function(err, cells) {
         console.log("Je lis atm")
         jour = cells[0]
         matiere = cells[1]
