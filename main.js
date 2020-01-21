@@ -279,10 +279,9 @@ bot.on('message', function (message) {
     let sheet
     doc.useServiceAccountAuth({client_email: process.env.GOOGLE_EMAIL, private_key: process.env.GOOGLE_TOKEN}, function(err) {
         doc.getInfo(function(err, info) {
-            console.log('Loaded doc: '+info.title+' by '+info.author.email);
-            sheet = info.worksheets[0];
-            console.log('sheet 1: '+sheet.title+' '+sheet.rowCount+'x'+sheet.colCount);
-          });
+            console.log('Loaded doc: '+info.title+' by '+info.author.email)
+            sheet = info.worksheets[0]
+            console.log('sheet 1: '+sheet.title+' '+sheet.rowCount+'x'+sheet.colCount)
         })
     })
 
