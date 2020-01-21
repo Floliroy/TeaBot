@@ -274,10 +274,11 @@ bot.on('message', function (message) {
         'return-empty': true
     }
 
-    const creds = {
+    /*const creds = {
         client_email: process.env.GOOGLE_EMAIL, 
         private_key: process.env.GOOGLE_TOKEN.replace(/\\n/g, '\n')
-    }
+    }*/
+    const creds = require('./google-generated-creds.json')
     doc.useServiceAccountAuth(creds, function(err) {
         if (err) console.log(err)
         console.log("Je me suis authentifié")
