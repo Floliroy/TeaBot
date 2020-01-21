@@ -270,7 +270,7 @@ bot.on('message', function (message) {
     let jour, matiere, description, imageURL, lien
 
     doc.useServiceAccountAuth({client_email: process.env.GOOGLE_EMAIL, private_key: process.env.GOOGLE_TOKEN}, function(err) {
-        const option = {
+        const options = {
             'min-row': 2,
             'max-row': 2,
             'min-col': 1,
@@ -278,7 +278,7 @@ bot.on('message', function (message) {
             'return-empty': true,
         }
 
-        doc.getCells(1, options,function(err, cells) {
+        doc.getCells(1, options, function(err, cells) {
             if(err){
                 message.reply("erreur")
             }
