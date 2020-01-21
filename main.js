@@ -14,7 +14,7 @@ const bot = new Discord.Client({
 })
 bot.login(process.env.TOKEN)
 bot.on("ready", function () {
-    bot.user.setActivity("Soulever DiegoPisse").catch(console.error)
+    bot.user.setActivity("conquérir le monde.").catch(console.error)
 })
 
 /*
@@ -259,5 +259,16 @@ bot.on('message', function (message) {
 bot.on('message', function (message) {
     if(message.content === "!ping"){
         message.reply("pong")
+    }
+
+    if(message.content === "test" && message.channel.guild.id === serversID.cira){
+        let messageEmbed = new Discord.RichEmbed()
+            .addField("Date", "21/01/2019")
+            .addField("Matière", "Maths")
+            .addField("Travail à faire", "Faire le DM de la page 34.\n+ faire l'exercice 2 de la page 36.")
+            .addField("Lien", "https://www.google.com/search?q=javascript+icone&rlz=1C1MSIM_enFR806FR806&sxsrf=ACYBGNQtHFevzTMYg-a25x2vA1dZJJD42Q:1579631890585&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjQgtutq5XnAhXQxIUKHaKvAnYQ_AUoAXoECA0QAw&cshid=1579631938432031&biw=2560&bih=937")
+            .setColor("#CE00E5")
+            .setThumbnail("https://www.icone-png.com/png/52/52496.png")
+        message.channel.send(messageEmbed);
     }
 })
