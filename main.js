@@ -50,6 +50,9 @@ bot.on('ready', function (evt) {
     logger.info("Running")
 })
 
+const serversID={
+    cira: "669236647765999676",
+}
 const usersId = {
     titouan: "300246251834834945",
     o4: "302898536356511745",
@@ -94,6 +97,7 @@ const rapportList = ["baise","baisé","sex","suce","sucé","penis","pénis","gay
 
 bot.on('message', function (message) {   
     if(message.author === bot.user){return}
+    if(message.channel.guild.id === serversID.cira){return}
     
     const texte = message.content.toLowerCase()
     const args = texte.split(" ")
