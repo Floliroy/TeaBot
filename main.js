@@ -7,7 +7,7 @@ const Bitly = new BitlyAPI({
 	client_secret: "Secret"	
 })
 const GoogleSpreadsheet = require('google-spreadsheet')
-const credentials = require('../google_credentials.js')
+const credentials = require('google_credentials.js')
 //configure le logger
 logger.remove(logger.transports.Console)
 logger.add(new logger.transports.Console, {
