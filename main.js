@@ -280,13 +280,13 @@ bot.on('message', function (message) {
     }
     doc.useServiceAccountAuth(creds, function(err) {
         console.log("Je me suis authentifié")
-        doc.getInfo(function(err, info) {
-            console.log('Loaded doc: '+info.title+' by '+info.author.email);
-            let sheet = info.worksheets[0];
-            console.log('sheet 1: '+sheet.title+' '+sheet.rowCount+'x'+sheet.colCount);
-            step();
+        doc.getRows(2, (err, rows) => {
+            jour = rows[0]
+            matiere = rows[1]
+            description = rows[2]
+            imageURL = rows[3]
+            lien = rows[4]
         })
-
         doc.getCells(1, options, function(err, cells) {
             console.log("Je lis les cellules")
 
