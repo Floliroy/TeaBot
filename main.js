@@ -7,6 +7,7 @@ const Bitly = new BitlyAPI({
 	client_secret: "Secret"	
 })
 const GoogleSpreadsheet = require('google-spreadsheet')
+const async = require('async');
 //configure le logger
 logger.remove(logger.transports.Console)
 logger.add(new logger.transports.Console, {
@@ -269,7 +270,43 @@ bot.on('message', function (message) {
     if(!authUserId.includes(message.author.id)){return}
     let jour, matiere, description, imageURL, lien
 
-    doc.useServiceAccountAuth({client_email: process.env.GOOGLE_EMAIL, private_key: process.env.GOOGLE_TOKEN}, function(err) {
+    const sheet;
+
+    async.series([
+        function setAuth(step) {      
+            doc.useServiceAccountAuth({client_email: process.env.GOOGLE_EMAIL, private_key: process.env.GOOGLE_TOKEN}, step);
+        },
+        function getInfoAndWorksheets(step) {
+            doc.getInfo(function(err, info) {
+                console.log('Loaded doc: '+info.title+' by '+info.author.email);
+                sheet = info.worksheets[0];
+                console.log('sheet 1: '+sheet.title+' '+sheet.rowCount+'x'+sheet.colCount);
+                step();
+            });
+        },
+        function workingWithCells(step) {
+          sheet.getCells({
+            'min-row': 2,
+            'max-row': 3,
+            'min-col': 1,
+            'max-col': 5,
+            'return-empty': true
+          }, function(err, cells) {
+            jour = cells[0]
+            matiere = cells[1]
+            description = cells[2]
+            imageURL = cells[3]
+            lien = cells[4]
+            step();
+          });
+        },
+    ], function(err){
+        if( err ) {
+            console.log('Error: '+err);
+        }
+    });
+
+    /*doc.useServiceAccountAuth({client_email: process.env.GOOGLE_EMAIL, private_key: process.env.GOOGLE_TOKEN}, function(err) {
         const options = {
             'min-row': 1,
             'max-row': 3,
@@ -288,7 +325,7 @@ bot.on('message', function (message) {
             imageURL = cells[3]
             lien = cells[4]
         })
-    })
+    })*/
 
     if(message.content === "test" && message.channel.guild.id === serversID.cira){
         let messageEmbed = new Discord.RichEmbed()
