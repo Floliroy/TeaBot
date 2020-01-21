@@ -282,7 +282,7 @@ bot.on('message', function (message) {
     }
     doc.useServiceAccountAuth(creds, function(err) {
         console.log("Je me suis authentifié")
-        doc.getCells(1, options, function(err, info) {
+        doc.getCells(1, options, function(err, cells) {
             console.log("Je lis atm")
             jour = cells[0].value()
             matiere = cells[1].value()
