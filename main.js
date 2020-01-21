@@ -7,7 +7,6 @@ const Bitly = new BitlyAPI({
 	client_secret: "Secret"	
 })
 const GoogleSpreadsheet = require('google-spreadsheet')
-const credentials = require('google_credentials.js')
 //configure le logger
 logger.remove(logger.transports.Console)
 logger.add(new logger.transports.Console, {
@@ -270,7 +269,7 @@ bot.on('message', function (message) {
     if(!authUserId.includes(message.author.id)){return}
     let jour, matiere, description, imageURL, lien
 
-    doc.useServiceAccountAuth(credentials, function(err) {
+    doc.useServiceAccountAuth({client_email: process.env.GOOGLE_EMAIL, private_key: process.env.GOOGLE_TOKEN}, function(err) {
         doc.getRows(1, {offset :1, limit:2} ,function(err, rows) {
             jour = rows[0]
             matiere = rows[1]
