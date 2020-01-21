@@ -13,7 +13,7 @@
     "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
     "discord.js": "^11.5.1",
     "dotenv": "^7.0.0",
-    "google-spreadsheet": "^2.0.7",
+    "google-spreadsheet": "^2.0.8",
     "googleapis": "^39.2.0",
     "message": "0.0.1",
     "moment": "^2.24.0",

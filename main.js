@@ -1,11 +1,13 @@
-require("dotenv").config();
+require("dotenv").config()
 const Discord = require('discord.js')
 const logger = require('winston')
-const BitlyAPI = require("node-bitlyapi");
+const BitlyAPI = require('node-bitlyapi')
 const Bitly = new BitlyAPI({
-	client_id: "Something",
-	client_secret: "Something"	
-});
+	client_id: "BotTeaP",
+	client_secret: "Secret"	
+})
+const GoogleSpreadsheet = require('google-spreadsheet')
+const credentials = require('../google_credentials.js')
 //configure le logger
 logger.remove(logger.transports.Console)
 logger.add(new logger.transports.Console, {
@@ -21,7 +23,7 @@ bot.login(process.env.TOKEN)
 bot.on("ready", function () {
     bot.user.setActivity("conquérir le monde.").catch(console.error)
 })
-Bitly.setAccessToken(process.env.BITLY_TOKEN);
+Bitly.setAccessToken(process.env.BITLY_TOKEN)
 
 /*
 To see the previous implemented functions go to the initial commit
@@ -262,27 +264,39 @@ bot.on('message', function (message) {
     }
 })
 
+const doc = new GoogleSpreadsheet('1WfqDf1dTnhcmusyHsbPgcfmmGIBzlFG_Eu1eDQ9BB_s')
 bot.on('message', function (message) {
-    if(message.content === "!ping"){
-        message.reply("pong")
-    }
+    if(message.channel.guild.id != serversID.cira){return}
+    if(!authUserId.includes(message.author.id)){return}
+    let jour, matiere, description, imageURL, lien
+
+    doc.useServiceAccountAuth(credentials, function(err) {
+        doc.getRows(1, {offset :1, limit:2} ,function(err, rows) {
+            jour = rows[0]
+            matiere = rows[1]
+            description = rows[2]
+            imageURL = rows[3]
+            lien = rows[4]
+        })
+    })
 
     if(message.content === "test" && message.channel.guild.id === serversID.cira){
         let messageEmbed = new Discord.RichEmbed()
-            .addField("Date", "21/01/2019")
-            .addField("Matière", "Maths")
-            .addField("Travail à faire", "Faire le DM de la page 34.\n+ faire l'exercice 2 de la page 36.")
-            .addField("Lien", "https://www.google.com/search?q=javascript+icone&rlz=1C1MSIM_enFR806FR806&sxsrf=ACYBGNQtHFevzTMYg-a25x2vA1dZJJD42Q:1579631890585&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjQgtutq5XnAhXQxIUKHaKvAnYQ_AUoAXoECA0QAw&cshid=1579631938432031&biw=2560&bih=937")
+            .addField("Date", jour)
+            .addField("Matière", matiere)
+            .addField("Travail à faire", description)
+            .addField("Image", imageURL)
+            .addField("Lien", lien)
             .setColor("#CE00E5")
             .setThumbnail("https://www.icone-png.com/png/52/52496.png")
         message.channel.send(messageEmbed)
     }
 
-    if(message.content === "bitly" && message.channel.guild.id === serversID.cira){
+    /*if(message.content === "bitly" && message.channel.guild.id === serversID.cira){
         Bitly.shortenLink("https://www.google.com/search?q=javascript+icone&rlz=1C1MSIM_enFR806FR806&sxsrf=ACYBGNQtHFevzTMYg-a25x2vA1dZJJD42Q:1579631890585&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjQgtutq5XnAhXQxIUKHaKvAnYQ_AUoAXoECA0QAw&cshid=1579631938432031&biw=2560&bih=937", function(err, results) {
             const bitlink = JSON.parse(results)
             const finalURL = bitlink.data.url
             message.reply(finalURL)
-        });
-    }
+        })
+    }*/
 })
