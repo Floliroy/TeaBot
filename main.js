@@ -279,8 +279,11 @@ bot.on('message', function (message) {
         private_key: process.env.GOOGLE_TOKEN
     }
     doc.useServiceAccountAuth(creds, function(err) {
+        if (err) console.log(err)
         console.log("Je me suis authentifié")
+
         doc.getRows(2, (err, rows) => {
+            if (err) console.log(err)
             console.log("Je lis les rows")
             jour = rows[0]
             matiere = rows[1]
@@ -288,7 +291,9 @@ bot.on('message', function (message) {
             imageURL = rows[3]
             lien = rows[4]
         })
+        
         doc.getCells(1, options, function(err, cells) {
+            if (err) console.log(err)
             console.log("Je lis les cellules")
 
             jour = cells[0].value
