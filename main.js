@@ -281,6 +281,7 @@ bot.on('message', function (message) {
     doc.useServiceAccountAuth(creds, function(err) {
         console.log("Je me suis authentifié")
         doc.getRows(2, (err, rows) => {
+            console.log("Je lis les rows")
             jour = rows[0]
             matiere = rows[1]
             description = rows[2]
