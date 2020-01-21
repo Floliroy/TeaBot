@@ -276,7 +276,7 @@ bot.on('message', function (message) {
 
     const creds = {
         client_email: process.env.GOOGLE_EMAIL, 
-        private_key: process.env.GOOGLE_TOKEN
+        private_key: process.env.GOOGLE_TOKEN.replace(/\\n/g, '\n')
     }
     doc.useServiceAccountAuth(creds, function(err) {
         if (err) console.log(err)
@@ -291,7 +291,7 @@ bot.on('message', function (message) {
             imageURL = rows[3]
             lien = rows[4]
         })
-        
+
         doc.getCells(1, options, function(err, cells) {
             if (err) console.log(err)
             console.log("Je lis les cellules")
