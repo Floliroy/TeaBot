@@ -269,14 +269,13 @@ bot.on('message', function (message) {
     if(!authUserId.includes(message.author.id)){return}
     let jour, matiere, description, imageURL, lien
     const options = {
-        'min-row': 1,
+        'min-row': 2,
         'max-row': 3,
         'min-col': 1,
         'max-col': 5,
         'return-empty': true,
     }
 
-    let sheet
     const creds = {
         client_email: process.env.GOOGLE_EMAIL, 
         private_key: process.env.GOOGLE_TOKEN
@@ -285,11 +284,11 @@ bot.on('message', function (message) {
         console.log("Je me suis authentifié")
         doc.getCells(1, options, function(err, info) {
             console.log("Je lis atm")
-            jour = cells[0]
-            matiere = cells[1]
-            description = cells[2]
-            imageURL = cells[3]
-            lien = cells[4]
+            jour = cells[0].value()
+            matiere = cells[1].value()
+            description = cells[2].value()
+            imageURL = cells[3].value()
+            lien = cells[4].value()
         })
     })
 
