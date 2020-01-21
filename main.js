@@ -283,17 +283,13 @@ bot.on('message', function (message) {
     }
     doc.useServiceAccountAuth(creds, function(err) {
         console.log("Je me suis authentifié")
-        doc.getInfo(function(err, info) {
-            console.log('Loaded doc: '+info.title+' by '+info.author.email)
-            sheet = info.worksheets[0]
-            sheet.getCells(options, function(err, cells) {
-                console.log("Je lis atm")
-                jour = cells[0]
-                matiere = cells[1]
-                description = cells[2]
-                imageURL = cells[3]
-                lien = cells[4]
-            })
+        doc.getCells(1, options, function(err, info) {
+            console.log("Je lis atm")
+            jour = cells[0]
+            matiere = cells[1]
+            description = cells[2]
+            imageURL = cells[3]
+            lien = cells[4]
         })
     })
 
