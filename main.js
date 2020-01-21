@@ -271,8 +271,6 @@ bot.on('message', function (message) {
     const options = {
         'min-row': 2,
         'max-row': 3,
-        'min-col': 1,
-        'max-col': 5,
         'return-empty': true,
     }
 
@@ -283,7 +281,7 @@ bot.on('message', function (message) {
     doc.useServiceAccountAuth(creds, function(err) {
         console.log("Je me suis authentifié")
         doc.getCells(1, options, function(err, cells) {
-            console.log("Je lis atm")
+            console.log("Je lis atm, taille : " + cells.length)
             jour = cells[0].value()
             matiere = cells[1].value()
             description = cells[2].value()
