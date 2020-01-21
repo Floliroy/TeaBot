@@ -271,8 +271,8 @@ bot.on('message', function (message) {
 
     doc.useServiceAccountAuth({client_email: process.env.GOOGLE_EMAIL, private_key: process.env.GOOGLE_TOKEN}, function(err) {
         const options = {
-            'min-row': 2,
-            'max-row': 2,
+            'min-row': 1,
+            'max-row': 3,
             'min-col': 1,
             'max-col': 5,
             'return-empty': true,
