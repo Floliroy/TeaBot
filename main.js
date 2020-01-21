@@ -277,21 +277,24 @@ bot.on('message', function (message) {
     }
 
     let sheet
-    doc.useServiceAccountAuth({client_email: process.env.GOOGLE_EMAIL, private_key: process.env.GOOGLE_TOKEN}, function(err) {
+    const creds = {
+        client_email: process.env.GOOGLE_EMAIL, 
+        private_key: process.env.GOOGLE_TOKEN
+    }
+    doc.useServiceAccountAuth(creds, function(err) {
+        console.log("Je me suis authentifié")
         doc.getInfo(function(err, info) {
             console.log('Loaded doc: '+info.title+' by '+info.author.email)
             sheet = info.worksheets[0]
-            console.log('sheet 1: '+sheet.title+' '+sheet.rowCount+'x'+sheet.colCount)
+            sheet.getCells(options, function(err, cells) {
+                console.log("Je lis atm")
+                jour = cells[0]
+                matiere = cells[1]
+                description = cells[2]
+                imageURL = cells[3]
+                lien = cells[4]
+            })
         })
-    })
-
-    sheet.getCells(options, function(err, cells) {
-        console.log("Je lis atm")
-        jour = cells[0]
-        matiere = cells[1]
-        description = cells[2]
-        imageURL = cells[3]
-        lien = cells[4]
     })
 
     if(message.content === "test" && message.channel.guild.id === serversID.cira){
