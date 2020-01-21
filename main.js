@@ -255,3 +255,9 @@ bot.on('message', function (message) {
         }
     }
 })
+
+bot.on('message', function (message) {
+    if(message.content === "!ping"){
+        message.reply("pong")
+    }
+})
