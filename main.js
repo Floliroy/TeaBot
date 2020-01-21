@@ -280,8 +280,16 @@ bot.on('message', function (message) {
     }
     doc.useServiceAccountAuth(creds, function(err) {
         console.log("Je me suis authentifié")
-        doc.getCells(1, function(err, cells) {
+        doc.getInfo(function(err, info) {
+            console.log('Loaded doc: '+info.title+' by '+info.author.email);
+            let sheet = info.worksheets[0];
+            console.log('sheet 1: '+sheet.title+' '+sheet.rowCount+'x'+sheet.colCount);
+            step();
+        })
+
+        doc.getCells(1, options, function(err, cells) {
             console.log("Je lis les cellules")
+
             jour = cells[0].value
             matiere = cells[1].value
             description = cells[2].value
