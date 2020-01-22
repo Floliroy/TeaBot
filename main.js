@@ -310,7 +310,6 @@ bot.on('message', function (message) {
                 if(lien != "" && lien != null){
                     const bitlink = JSON.parse(results)
                     lien = bitlink.data.url
-                    console.log("New Lien : " + lien)
                 }
 
                 let messageEmbed = new Discord.RichEmbed()
@@ -318,7 +317,7 @@ bot.on('message', function (message) {
                     .setDescription(description)
                     .addBlankField()
                     .addField("Date", jour)
-                    .setColor("#FFFFFF")
+                    .setColor("#000000")
 
                 if(lien != "" && lien != null){
                     messageEmbed.setURL(lien)
