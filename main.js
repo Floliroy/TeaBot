@@ -306,6 +306,7 @@ bot.on('message', function (message) {
                 Bitly.shortenLink(lien, function(err, results) {
                     const bitlink = JSON.parse(results)
                     lien = bitlink.data.url
+                    console.log("New Lien : " + lien)
                 })
             }
 
@@ -317,7 +318,7 @@ bot.on('message', function (message) {
                 .setColor("#FFFFFF")
 
             if(lien != "" && lien != null){
-                messageEmbed.setURL(lien).setFooter(`Lien : ${lien}`, lien);
+                messageEmbed.setURL(lien)
             }
             if(imageURL != "" && imageURL != null){
                 messageEmbed.setThumbnail("https://www.icone-png.com/png/52/52496.png")
@@ -326,13 +327,4 @@ bot.on('message', function (message) {
             return message.channel.send(messageEmbed)
         })
     })
-    
-
-    /*if(message.content === "bitly" && message.channel.guild.id === serversID.cira){
-        Bitly.shortenLink("https://www.google.com/search?q=javascript+icone&rlz=1C1MSIM_enFR806FR806&sxsrf=ACYBGNQtHFevzTMYg-a25x2vA1dZJJD42Q:1579631890585&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjQgtutq5XnAhXQxIUKHaKvAnYQ_AUoAXoECA0QAw&cshid=1579631938432031&biw=2560&bih=937", function(err, results) {
-            const bitlink = JSON.parse(results)
-            const finalURL = bitlink.data.url
-            message.reply(finalURL)
-        })
-    }*/
 })
