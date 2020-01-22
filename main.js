@@ -295,19 +295,20 @@ bot.on('message', function (message) {
             description = `${cells[2].value}`
             imageURL = `${cells[3].value}`
             lien = `${cells[4].value}`
+
+            console.log("J'envoie le message")
+            let messageEmbed = new Discord.RichEmbed()
+                .addField("Date", jour)
+                .addField("Matière", matiere)
+                .addField("Travail à faire", description)
+                .addField("Image", imageURL)
+                .addField("Lien", lien)
+                .setColor("#CE00E5")
+                .setThumbnail("https://www.icone-png.com/png/52/52496.png")
+            return message.channel.send(messageEmbed)
         })
     })
-
-    let messageEmbed = new Discord.RichEmbed()
-        .addField("Date", jour)
-        .addField("Matière", matiere)
-        .addField("Travail à faire", description)
-        .addField("Image", imageURL)
-        .addField("Lien", lien)
-        .setColor("#CE00E5")
-        .setThumbnail("https://www.icone-png.com/png/52/52496.png")
-    console.log("J'envoie le message")
-    return message.channel.send(messageEmbed)
+    
 
     /*if(message.content === "bitly" && message.channel.guild.id === serversID.cira){
         Bitly.shortenLink("https://www.google.com/search?q=javascript+icone&rlz=1C1MSIM_enFR806FR806&sxsrf=ACYBGNQtHFevzTMYg-a25x2vA1dZJJD42Q:1579631890585&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjQgtutq5XnAhXQxIUKHaKvAnYQ_AUoAXoECA0QAw&cshid=1579631938432031&biw=2560&bih=937", function(err, results) {
