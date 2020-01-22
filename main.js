@@ -269,7 +269,7 @@ bot.on('message', function (message) {
     if(!authUserId.includes(message.author.id)){return}
     let jour, matiere, description, imageURL, lien
     const options = {
-        'min-row': 1,
+        'min-row': 2,
         'max-row': 3,
         'return-empty': true
     }
@@ -286,11 +286,10 @@ bot.on('message', function (message) {
             if (err) console.log(err)
             console.log("Je lis les cellules, taille : " + cells.length)
             for(let i= 0; i < cells.length; i++){
-                console.log(i + " value : " + cells[i])
                 console.log(i + " value : " + cells[i].value)
             }
 
-            jour = cells[0]
+            jour = cells[0].value
             matiere = cells[1].value
             description = cells[2].value
             imageURL = cells[3].value
