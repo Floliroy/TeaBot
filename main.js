@@ -292,8 +292,11 @@ bot.on('message', function (message) {
             lien = cells[4].value.trim()
 
             if(jour === "" || lien === null || matiere === "" || matiere === null || description === "" || description === null){
+                message.reply("ERROR: Arguments missing in Google SpreadSheet...")
                 return
             }
+
+            message.delete()
 
             let moment = require('moment')
             moment().format()
@@ -308,23 +311,23 @@ bot.on('message', function (message) {
                     const bitlink = JSON.parse(results)
                     lien = bitlink.data.url
                     console.log("New Lien : " + lien)
-
-                    let messageEmbed = new Discord.RichEmbed()
-                        .setTitle(`Matière : ${matiere}`)
-                        .setDescription(description)
-                        .addBlankField()
-                        .addField("Date", jour)
-                        .setColor("#FFFFFF")
-
-                    if(lien != "" && lien != null){
-                        messageEmbed.setURL(lien)
-                    }
-                    if(imageURL != "" && imageURL != null){
-                        messageEmbed.setThumbnail(imageURL)
-                    }
-
-                    return message.channel.send(messageEmbed)
                 }
+
+                let messageEmbed = new Discord.RichEmbed()
+                    .setTitle(`Matière : ${matiere}`)
+                    .setDescription(description)
+                    .addBlankField()
+                    .addField("Date", jour)
+                    .setColor("#FFFFFF")
+
+                if(lien != "" && lien != null){
+                    messageEmbed.setURL(lien)
+                }
+                if(imageURL != "" && imageURL != null){
+                    messageEmbed.setThumbnail(imageURL)
+                }
+
+                return message.channel.send(messageEmbed)
             })
         })
     })
