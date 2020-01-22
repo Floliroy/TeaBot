@@ -317,7 +317,7 @@ bot.on('message', function (message) {
                     .setDescription(description)
                     .addBlankField()
                     .addField("Date", jour)
-                    .setColor("#000000")
+                    .setColor("#738ADB")
 
                 if(lien != "" && lien != null){
                     messageEmbed.setURL(lien)
