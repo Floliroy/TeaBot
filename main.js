@@ -291,6 +291,17 @@ bot.on('message', function (message) {
             imageURL = `${cells[3].value.trim()}`
             lien = `${cells[4].value.trim()}`
 
+            if(jour === "" || lien === null || matiere === "" || matiere === null || description === "" || description === null){
+                return
+            }
+
+            let moment = require('moment')
+            moment().format()
+            let dateSplit = jour.split('/')
+            let jours = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
+            let d = new Date(Date.UTC(dateSplit[2], dateSplit[1]-1, dateSplit[0]))
+            jour = `${jours[d.getDay()]} ${jour}`
+            
             if(lien != "" && lien != null){
                 Bitly.shortenLink(lien, function(err, results) {
                     const bitlink = JSON.parse(results)
@@ -303,9 +314,15 @@ bot.on('message', function (message) {
                 .setDescription(description)
                 .addBlankField()
                 .addField("Date", jour)
-                .setURL(lien)
                 .setColor("#FFFFFF")
-                .setThumbnail("https://www.icone-png.com/png/52/52496.png")
+
+            if(lien != "" && lien != null){
+                messageEmbed.setURL(lien)
+            }
+            if(imageURL != "" && imageURL != null){
+                messageEmbed.setThumbnail("https://www.icone-png.com/png/52/52496.png")
+            }
+
             return message.channel.send(messageEmbed)
         })
     })
