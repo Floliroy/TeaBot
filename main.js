@@ -284,7 +284,11 @@ bot.on('message', function (message) {
 
         doc.getCells(1, options, function(err, cells) {
             if (err) console.log(err)
-            console.log("Je lis les cellules")
+            console.log("Je lis les cellules, taille : " + cells.length)
+            for(let i= 0; i < cells.length; i++){
+                console.log(i + " value : " + cells[i])
+                console.log(i + " value : " + cells[i].value)
+            }
 
             jour = cells[0]
             matiere = cells[1].value
