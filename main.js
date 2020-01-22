@@ -302,29 +302,30 @@ bot.on('message', function (message) {
             let d = new Date(Date.UTC(dateSplit[2], dateSplit[1]-1, dateSplit[0]))
             jour = `${jours[d.getDay()]} ${jour}`
             
-            if(lien != "" && lien != null){
-                Bitly.shortenLink(lien, function(err, results) {
+            
+            Bitly.shortenLink(lien, function(err, results) {
+                if(lien != "" && lien != null){
                     const bitlink = JSON.parse(results)
                     lien = bitlink.data.url
                     console.log("New Lien : " + lien)
-                })
-            }
 
-            let messageEmbed = new Discord.RichEmbed()
-                .setTitle(`Matière : ${matiere}`)
-                .setDescription(description)
-                .addBlankField()
-                .addField("Date", jour)
-                .setColor("#FFFFFF")
+                    let messageEmbed = new Discord.RichEmbed()
+                        .setTitle(`Matière : ${matiere}`)
+                        .setDescription(description)
+                        .addBlankField()
+                        .addField("Date", jour)
+                        .setColor("#FFFFFF")
 
-            if(lien != "" && lien != null){
-                messageEmbed.setURL(lien)
-            }
-            if(imageURL != "" && imageURL != null){
-                messageEmbed.setThumbnail("https://www.icone-png.com/png/52/52496.png")
-            }
+                    if(lien != "" && lien != null){
+                        messageEmbed.setURL(lien)
+                    }
+                    if(imageURL != "" && imageURL != null){
+                        messageEmbed.setThumbnail(imageURL)
+                    }
 
-            return message.channel.send(messageEmbed)
+                    return message.channel.send(messageEmbed)
+                }
+            })
         })
     })
 })
