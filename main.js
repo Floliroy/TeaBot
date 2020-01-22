@@ -285,11 +285,11 @@ bot.on('message', function (message) {
         doc.getCells(1, options, function(err, cells) {
             if (err) console.log(err)
 
-            jour = `${cells[0].value.trim()}`
-            matiere = `${cells[1].value.trim()}`
-            description = `${cells[2].value.trim()}`
-            imageURL = `${cells[3].value.trim()}`
-            lien = `${cells[4].value.trim()}`
+            jour = cells[0].value.trim()
+            matiere = cells[1].value.trim()
+            description = cells[2].value.trim()
+            imageURL = cells[3].value.trim()
+            lien = cells[4].value.trim()
 
             if(jour === "" || lien === null || matiere === "" || matiere === null || description === "" || description === null){
                 return
@@ -317,7 +317,7 @@ bot.on('message', function (message) {
                 .setColor("#FFFFFF")
 
             if(lien != "" && lien != null){
-                messageEmbed.setURL(lien)
+                messageEmbed.setURL(lien).setFooter("Lien", lien);
             }
             if(imageURL != "" && imageURL != null){
                 messageEmbed.setThumbnail("https://www.icone-png.com/png/52/52496.png")
