@@ -60,6 +60,10 @@ bot.on('ready', function (evt) {
 const serversID={
     cira: "669236647765999676",
 }
+const channelsID={
+    travailCira1: "669237266413125663",
+    travailCira2: "669566513350443008",
+}
 const usersId = {
     titouan: "300246251834834945",
     o4: "302898536356511745",
@@ -267,7 +271,17 @@ const doc = new GoogleSpreadsheet('1WfqDf1dTnhcmusyHsbPgcfmmGIBzlFG_Eu1eDQ9BB_s'
 bot.on('message', function (message) {
     if(message.channel.guild.id != serversID.cira){return}
     if(!authUserId.includes(message.author.id)){return}
-    if(message.content != "test"){return}
+    if(message.content != "!travail"){return}
+    
+    let sheet
+    if(message.channel.id === channelsID.travailCira1){
+        sheet = 1
+    }else if(message.channel.id === channelsID.travailCira2){
+        sheet = 2
+    }else{
+        return
+    }
+
     let jour, matiere, description, imageURL, lien
     const options = {
         'min-row': 2,
@@ -282,7 +296,7 @@ bot.on('message', function (message) {
     doc.useServiceAccountAuth(creds, function(err) {
         if (err) console.log(err)
 
-        doc.getCells(1, options, function(err, cells) {
+        doc.getCells(sheet, options, function(err, cells) {
             if (err) console.log(err)
 
             jour = cells[0].value.trim()
@@ -292,8 +306,7 @@ bot.on('message', function (message) {
             lien = cells[4].value.trim()
 
             if(jour === "" || lien === null || matiere === "" || matiere === null || description === "" || description === null){
-                message.reply("ERROR: Arguments missing in Google SpreadSheet...")
-                return
+                return message.reply("ERROR: Arguments missing in Google SpreadSheet...")
             }
 
             message.delete()
