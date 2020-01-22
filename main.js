@@ -281,29 +281,30 @@ bot.on('message', function (message) {
     }
     doc.useServiceAccountAuth(creds, function(err) {
         if (err) console.log(err)
-        console.log("Je me suis authentifié")
 
         doc.getCells(1, options, function(err, cells) {
             if (err) console.log(err)
-            console.log("Je lis les cellules, taille : " + cells.length)
-            for(let i= 0; i < cells.length; i++){
-                console.log(i + " value : " + cells[i].value)
+
+            jour = `${cells[0].value.trim()}`
+            matiere = `${cells[1].value.trim()}`
+            description = `${cells[2].value.trim()}`
+            imageURL = `${cells[3].value.trim()}`
+            lien = `${cells[4].value.trim()}`
+
+            if(lien != "" && lien != null){
+                Bitly.shortenLink(lien, function(err, results) {
+                    const bitlink = JSON.parse(results)
+                    lien = bitlink.data.url
+                })
             }
 
-            jour = `${cells[0].value}`
-            matiere = `${cells[1].value}`
-            description = `${cells[2].value}`
-            imageURL = `${cells[3].value}`
-            lien = `${cells[4].value}`
-
-            console.log("J'envoie le message")
             let messageEmbed = new Discord.RichEmbed()
+                .setTitle(`Matière : ${matiere}`)
+                .setDescription(description)
+                .addBlankField()
                 .addField("Date", jour)
-                .addField("Matière", matiere)
-                .addField("Travail à faire", description)
-                .addField("Image", imageURL)
-                .addField("Lien", lien)
-                .setColor("#CE00E5")
+                .setURL(lien)
+                .setColor("#FFFFFF")
                 .setThumbnail("https://www.icone-png.com/png/52/52496.png")
             return message.channel.send(messageEmbed)
         })
