@@ -269,7 +269,7 @@ bot.on('message', function (message) {
     if(!authUserId.includes(message.author.id)){return}
     let jour, matiere, description, imageURL, lien
     const options = {
-        'min-row': 2,
+        'min-row': 1,
         'max-row': 3,
         'return-empty': true
     }
@@ -282,21 +282,11 @@ bot.on('message', function (message) {
         if (err) console.log(err)
         console.log("Je me suis authentifié")
 
-        doc.getRows(2, (err, rows) => {
-            if (err) console.log(err)
-            console.log("Je lis les rows")
-            jour = rows[0]
-            matiere = rows[1]
-            description = rows[2]
-            imageURL = rows[3]
-            lien = rows[4]
-        })
-
         doc.getCells(1, options, function(err, cells) {
             if (err) console.log(err)
             console.log("Je lis les cellules")
 
-            jour = cells[0].value
+            jour = cells[0]
             matiere = cells[1].value
             description = cells[2].value
             imageURL = cells[3].value
