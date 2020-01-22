@@ -317,7 +317,7 @@ bot.on('message', function (message) {
                 .setColor("#FFFFFF")
 
             if(lien != "" && lien != null){
-                messageEmbed.setURL(lien).setFooter("Lien", lien);
+                messageEmbed.setURL(lien).setFooter(`Lien : ${lien}`, lien);
             }
             if(imageURL != "" && imageURL != null){
                 messageEmbed.setThumbnail("https://www.icone-png.com/png/52/52496.png")
