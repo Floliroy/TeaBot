@@ -267,10 +267,11 @@ const doc = new GoogleSpreadsheet('1WfqDf1dTnhcmusyHsbPgcfmmGIBzlFG_Eu1eDQ9BB_s'
 bot.on('message', function (message) {
     if(message.channel.guild.id != serversID.cira){return}
     if(!authUserId.includes(message.author.id)){return}
+    if(message.content != "test"){return}
     let jour, matiere, description, imageURL, lien
     const options = {
         'min-row': 2,
-        'max-row': 3,
+        'max-row': 2,
         'return-empty': true
     }
 
@@ -289,25 +290,24 @@ bot.on('message', function (message) {
                 console.log(i + " value : " + cells[i].value)
             }
 
-            jour = cells[0].value
-            matiere = cells[1].value
-            description = cells[2].value
-            imageURL = cells[3].value
-            lien = cells[4].value
+            jour = `${cells[0].value}`
+            matiere = `${cells[1].value}`
+            description = `${cells[2].value}`
+            imageURL = `${cells[3].value}`
+            lien = `${cells[4].value}`
         })
     })
 
-    if(message.content === "test" && message.channel.guild.id === serversID.cira){
-        let messageEmbed = new Discord.RichEmbed()
-            .addField("Date", jour)
-            .addField("Matière", matiere)
-            .addField("Travail à faire", description)
-            .addField("Image", imageURL)
-            .addField("Lien", lien)
-            .setColor("#CE00E5")
-            .setThumbnail("https://www.icone-png.com/png/52/52496.png")
-        message.channel.send(messageEmbed)
-    }
+    let messageEmbed = new Discord.RichEmbed()
+        .addField("Date", jour)
+        .addField("Matière", matiere)
+        .addField("Travail à faire", description)
+        .addField("Image", imageURL)
+        .addField("Lien", lien)
+        .setColor("#CE00E5")
+        .setThumbnail("https://www.icone-png.com/png/52/52496.png")
+    console.log("J'envoie le message")
+    return message.channel.send(messageEmbed)
 
     /*if(message.content === "bitly" && message.channel.guild.id === serversID.cira){
         Bitly.shortenLink("https://www.google.com/search?q=javascript+icone&rlz=1C1MSIM_enFR806FR806&sxsrf=ACYBGNQtHFevzTMYg-a25x2vA1dZJJD42Q:1579631890585&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjQgtutq5XnAhXQxIUKHaKvAnYQ_AUoAXoECA0QAw&cshid=1579631938432031&biw=2560&bih=937", function(err, results) {
