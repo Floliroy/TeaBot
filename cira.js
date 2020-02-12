@@ -1,4 +1,5 @@
 require("dotenv").config()
+const Discord = require('discord.js')
 const BitlyAPI = require('node-bitlyapi')
 const Bitly = new BitlyAPI({
 	client_id: "BotTeaP",

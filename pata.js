@@ -1,4 +1,5 @@
 require("dotenv").config()
+const Discord = require('discord.js')
 
 function sendRandomNumber(max, multiplicator, hexColor, titre, texte, channel){
     let valeur = Math.floor(Math.random() * (max+1) * multiplicator) 
