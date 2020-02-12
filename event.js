@@ -51,6 +51,6 @@ module.exports = class Event{
         .then(msg => {msg.react("✅")
             .then(() => msg.react("❌"))
             .then(() => msg.react("➖"))
-        }))
+        })).then(() => chan.send("@everyone"))
     }
 }
