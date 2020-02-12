@@ -26,6 +26,8 @@ bot.on('message', function (message) {
     Cira.ciraMessage(message, bot)
 })
 
-cron.schedule("07 00 * * Thursday", function() {
+cron.schedule("17 00 * * Thursday", function() {
     Event.eventMessage(bot)
+}, {
+    timezone: "Europe/Paris"
 });
