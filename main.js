@@ -20,9 +20,6 @@ bot.on("ready", function () {
 })
 
 bot.on('message', function (message) {   
-    pata = new Pata()
-    cira = new Cira()
-    
-    pata.ciraMessage(message, bot)
-    cira.ciraMessage(message, bot)
+    Pata.pataMessage(message, bot)
+    Cira.ciraMessage(message, bot)
 })
