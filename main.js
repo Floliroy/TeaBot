@@ -1,6 +1,7 @@
 require("dotenv").config()
 const Discord = require('discord.js')
 const logger = require('winston')
+const cron = require('node-cron')
 const Pata = require("./pata.js")
 const Cira = require("./cira.js")
 const Event = require("./event.js")
@@ -25,6 +26,6 @@ bot.on('message', function (message) {
     Cira.ciraMessage(message, bot)
 })
 
-cron.schedule("05 00 * * Thursdat", function() {
+cron.schedule("07 00 * * Thursday", function() {
     Event.eventMessage(bot)
 });
