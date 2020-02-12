@@ -23,5 +23,8 @@ bot.on("ready", function () {
 bot.on('message', function (message) {   
     Pata.pataMessage(message, bot)
     Cira.ciraMessage(message, bot)
-    Event.eventMessage(message, bot)
 })
+
+cron.schedule("05 00 * * Thursdat", function() {
+    Event.eventMessage(bot)
+});
