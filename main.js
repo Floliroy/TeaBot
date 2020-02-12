@@ -3,6 +3,7 @@ const Discord = require('discord.js')
 const logger = require('winston')
 const Pata = require("./pata.js")
 const Cira = require("./cira.js")
+const Event = require("./event.js")
 //configure le logger
 logger.remove(logger.transports.Console)
 logger.add(new logger.transports.Console, {
@@ -22,4 +23,5 @@ bot.on("ready", function () {
 bot.on('message', function (message) {   
     Pata.pataMessage(message, bot)
     Cira.ciraMessage(message, bot)
+    Event.eventMessage(message, bot)
 })
