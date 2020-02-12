@@ -18,8 +18,8 @@ bot.on("ready", function () {
 })
 
 bot.on('message', function (message) {   
-    const Pata = require("pata.js")
-    const Cira = require("cira.js")
+    const Pata = require("./pata.js")
+    const Cira = require("./cira.js")
     
     Pata.ciraMessage(message, bot)
     Cira.ciraMessage(message, bot)
