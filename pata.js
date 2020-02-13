@@ -146,6 +146,9 @@ module.exports = class Pata{
                         return message.member.setNickname(message.member.nickname.replace(" (AFK)", ""))
                     }
                 } return
+            case "!github":
+                message.delete()
+                return message.channel.send("https://github.com/Floliroy/TeaBot")
         }
         
         if(texte.startsWith("!gay")){

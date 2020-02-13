@@ -25,6 +25,7 @@ async function envoieJours(chan){
         chan.send({embed: {title : `${jour} - ${dd}/${mm}`}})
         .then(msg => {msg.react("✅")
             .then(() => msg.react("❌"))
+            .then(() => msg.react("🕐"))
             .then(() => msg.react("➖"))
         })
     }
@@ -39,7 +40,14 @@ module.exports = class Event{
     static eventMessage(bot){
         const chan = bot.channels.get(channelsID.planning_lol)
         
+        let messageEmbed = new Discord.RichEmbed()
+            .setTitle("Planning Team-LoL")
+            .addField("Pas là ?", "Expliquez votre absence (et son jour) en dessous du planning...")
+            .addField("En retard ?", "Réagissez avec l'emote horloge et donnez une explication afin de savoir combien de temps vous allez mettre...")
+            .setColor("#FF9F33")
+
         clear(chan)
+        .then(() => chan.send(messageEmbed))
         .then(() => envoieJours(chan))
         .then(() => chan.send("@everyone"))
     }
