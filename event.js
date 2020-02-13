@@ -15,7 +15,7 @@ async function envoieJours(chan){
 
     for await(let jour of jours){
         
-        date.setDate(date.getDate + (cpt++))
+        date.setDate(date.getDate + 1)
         let dd = date.getDate()
         let mm = date.getMonth() + 1
         /*if(dd < ddSave){
