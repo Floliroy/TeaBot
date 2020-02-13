@@ -2,7 +2,7 @@ require("dotenv").config()
 const Discord = require('discord.js')
 
 const channelsID={
-    team_lol: "674359086636072994",
+    planning_lol: "677556140913197057",
 }
 
 async function envoieJours(chan){
@@ -17,11 +17,17 @@ async function envoieJours(chan){
     }
 }
 
+async function clear(chan) {
+    const fetched = await chan.fetchMessages({limit: 99});
+    chan.bulkDelete(fetched);
+}
+
 module.exports = class Event{
     static eventMessage(bot){
-        const chan = bot.channels.get(channelsID.team_lol)
+        const chan = bot.channels.get(channelsID.planning_lol)
         
-        envoieJours(chan)
+        clear(chan)
+        .then(() => envoieJours(chan))
         .then(() => chan.send("@everyone"))
     }
 }
