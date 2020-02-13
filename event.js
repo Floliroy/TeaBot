@@ -8,7 +8,7 @@ const channelsID={
 async function envoieJours(chan){
     const jours = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]
 
-    const today = new Date()
+    const today = new Date('December 28, 1995 03:24:00')
     let ddSave
     let mm = today.getMonth() + 1
     
@@ -22,7 +22,7 @@ async function envoieJours(chan){
         }
         ddSave = dd
 
-        chan.send({embed: {title : `${jour} ${dd}/${mm}`}})
+        chan.send({embed: {title : `${jour} ${String(dd).padStart(2, '0')}/${String(mm).padStart(2, '0')}`}})
         .then(msg => {msg.react("✅")
             .then(() => msg.react("❌"))
             .then(() => msg.react("➖"))
