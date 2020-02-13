@@ -8,14 +8,14 @@ const channelsID={
 async function envoieJours(chan){
     const jours = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]
 
-    let date = new Date('December 28, 1995 03:24:00')
-    /*let ddSave
+    //let ddSave
     
-    let cpt = 1*/
+    let cpt = 1
 
     for await(let jour of jours){
         
-        date.setDate(date.getDate + 1)
+        let date = new Date('December 28, 1995 03:24:00')
+        date.setDate(date.getDate + (cpt++))
         let dd = date.getDate()
         let mm = date.getMonth() + 1
         /*if(dd < ddSave){
