@@ -5,6 +5,12 @@ const channelsID={
     planning_lol: "677556140913197057",
 }
 
+Date.prototype.addDays = function(days) {
+    var date = new Date(this.valueOf());
+    date.setDate(date.getDate() + days);
+    return date;
+}
+
 async function envoieJours(chan){
     const jours = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]
 
@@ -15,7 +21,7 @@ async function envoieJours(chan){
     for await(let jour of jours){
         
         let date = new Date('December 28, 1995 03:24:00')
-        date.setDate(date.getDate + (cpt++))
+        date.addDays((cpt++))
         let dd = date.getDate()
         let mm = date.getMonth() + 1
         /*if(dd < ddSave){
