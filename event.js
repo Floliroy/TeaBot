@@ -76,19 +76,16 @@ module.exports = class Event{
         .then(() => chan.send("@everyone"))
     }
 
-    static eventJour(bot){
+    static async eventJour(bot){
         const chan = bot.channels.get(channelsID.team_lol)
-        const msg = getDayliMessage(bot)
-        .then(() => function(){
-            if(msg != null && msg.reactions.find(val => val.name === "❌").count > 1){
-                console.log("NON")
-            }else if(msg != null){
-                console.log("OUI")
-            }else{
-                console.log("pas trouvé")
-            }
-        })
-        
-        
+        const msg = await getDayliMessage(bot)
+
+        if(msg != null && msg.reactions.find(val => val.name === "❌").count > 1){
+            console.log("NON")
+        }else if(msg != null){
+            console.log("OUI")
+        }else{
+            console.log("pas trouvé")
+        }
     }
 }
