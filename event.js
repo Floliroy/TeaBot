@@ -40,9 +40,8 @@ async function clear(chan) {
 async function getDayliMessage(bot) {
     const chan = bot.channels.get(channelsID.planning_lol)
     const today = new Date()
-    let date = today.addDays(3)
-    let dd = String(date.getDate()).padStart(2, '0')
-    let mm = String(date.getMonth() + 1).padStart(2, '0')
+    let dd = String(today.getDate()).padStart(2, '0')
+    let mm = String(today.getMonth() + 1).padStart(2, '0')
 
     let retour
 
@@ -81,11 +80,20 @@ module.exports = class Event{
         const msg = await getDayliMessage(bot)
 
         if(msg != null && msg.reactions.get("❌").count > 1){
-            console.log("NON " + msg.reactions.get("❌").count)
+            let messageEmbed = new Discord.RichEmbed()
+            .setTitle("Soirée annulée, il manque quelqu'un...")
+            .setColor("#FF9F33")
+
+            chan.send("@everyone")
+            .then(() => chan.send(messageEmbed))
+            
         }else if(msg != null){
-            console.log("OUI " + msg.reactions.get("❌").count)
-        }else{
-            console.log("pas trouvé")
+            let messageEmbed = new Discord.RichEmbed()
+            .setTitle("Départ ce soir entre 21h30 et 22h00 !")
+            .setColor("#FF9F33")
+            
+            chan.send("@everyone")
+            .then(() => chan.send(messageEmbed))
         }
     }
 }
