@@ -26,7 +26,7 @@ bot.on('message', function (message) {
     Cira.ciraMessage(message, bot)
 })
 
-cron.schedule("30 22 * * Sunday", function() {
+cron.schedule("25 12 * * Thursday", function() {
     console("-- Cron Started --")
     Event.eventMessage(bot)
     console("-- Cron Ended --")
