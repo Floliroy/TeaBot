@@ -13,20 +13,19 @@ Date.prototype.addDays = function(days) {
 
 async function envoieJours(chan){
     const jours = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]
+    
     let cpt = 1
 
-    jours.forEach(function(elem){    
-        let date = new Date('December 28, 1995 03:24:00') 
-        date.addDays(cpt)
-        cpt++
+    for await(let jour of jours){
+        
+        let date = new Date('December 28, 1995 03:24:00')
+        date.addDays((cpt++))
+        console.log("Days : " + cpt)
         let dd = date.getDate()
         let mm = date.getMonth() + 1
-        elem = `${elem} ${String(dd).padStart(2, '0')}/${String(mm).padStart(2, '0')}`
-        console.log(`${elem}`)
-    })
-
-    for await(let jour of jours){
-        chan.send({embed: {title : `${jour}`}})
+        
+        console.log(`${jour} ${String(dd).padStart(2, '0')}/${String(mm).padStart(2, '0')}`)
+        chan.send({embed: {title : `${jour} ${String(dd).padStart(2, '0')}/${String(mm).padStart(2, '0')}`}})
         .then(msg => {msg.react("✅")
             .then(() => msg.react("❌"))
             .then(() => msg.react("➖"))
