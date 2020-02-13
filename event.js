@@ -40,13 +40,16 @@ async function clear(chan) {
 function getDayliMessage(bot) {
     const chan = bot.channels.get(channelsID.planning_lol)
     const today = new Date()
-    let dd = String(today.getDate() + 2).padStart(2, '0')
-    let mm = String(today.getMonth() + 1).padStart(2, '0')
+    let date = today.addDays(3)
+    let dd = String(date.getDate()).padStart(2, '0')
+    let mm = String(date.getMonth() + 1).padStart(2, '0')
 
     chan.fetchMessages({ limit: 99 }).then(messages => {
         messages.forEach(function(msg){
             msg.embeds.forEach(function(element){     
+                console.log(element.title)
                 if(element.title.endsWith(` - ${dd}/${mm}`)){
+                    console.log("ok")
                     return msg
                 }
             })
@@ -74,10 +77,12 @@ module.exports = class Event{
         const chan = bot.channels.get(channelsID.team_lol)
         const msg = getDayliMessage(bot)
         
-        if(msg.reactions.find(val => val.name === "❌").count > 1){
+        if(msg != null && msg.reactions.find(val => val.name === "❌").count > 1){
             console.log("NON")
-        }else{
+        }else if(msg != null){
             console.log("OUI")
+        }else{
+            console.log("pas trouvé")
         }
     }
 }
