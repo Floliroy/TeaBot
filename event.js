@@ -3,6 +3,7 @@ const Discord = require('discord.js')
 
 const channelsID={
     planning_lol: "677556140913197057",
+    team_lol: "674359086636072994"
 }
 
 Date.prototype.addDays = function(days) {
@@ -36,8 +37,25 @@ async function clear(chan) {
     chan.bulkDelete(fetched);
 }
 
+function getDayliMessage() {
+    const chan = bot.channels.get(channelsID.planning_lol)
+    const today = new Date()
+    let dd = String(today.getDate() + 2).padStart(2, '0')
+    let mm = String(today.getMonth() + 1).padStart(2, '0')
+
+    chan.fetchMessages({ limit: 99 }).then(messages => {
+        messages.forEach(function(msg){
+            msg.embeds.forEach(function(element){     
+                if(element.title.endsWith(` - ${dd}/${mm}`)){
+                    return msg
+                }
+            })
+        })
+    })
+}
+
 module.exports = class Event{
-    static eventMessage(bot){
+    static eventPlanning(bot){
         const chan = bot.channels.get(channelsID.planning_lol)
         
         let messageEmbed = new Discord.RichEmbed()
@@ -50,5 +68,16 @@ module.exports = class Event{
         .then(() => chan.send(messageEmbed))
         .then(() => envoieJours(chan))
         .then(() => chan.send("@everyone"))
+    }
+
+    static eventJour(bot){
+        const chan = bot.channels.get(channelsID.team_lol)
+        const msg = getDayliMessage()
+        
+        if(msg.reactions.find(val => val.name === "❌").count > 1){
+            console.log("NON")
+        }else{
+            console.log("OUI")
+        }
     }
 }

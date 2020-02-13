@@ -25,23 +25,22 @@ bot.on("ready", function () {
 bot.on('message', function (message) {
     Pata.pataMessage(message, bot)
     Cira.ciraMessage(message, bot)
-    
-    if(message.content.toLowerCase() === "!test"){
-        let channel = bot.channels.get("677556140913197057")
-        channel.fetchMessages({ limit: 99 }).then(messages => {
-            messages.forEach(function(msg){
-                msg.embeds.forEach(function(element){     
-                    console.log("|" + element.title + "|")
-                })
-            })
-        })
-    }
 
+    if(message.content.startsWith() === "!test"){
+        Event.eventJour(bot)
+    }
 })
 
 cron.schedule("30 22 * * Sunday", function() {
-    console.log("-- Cron Started --")
-    Event.eventMessage(bot)
+    console.log("-- Cron Planning Started --")
+    Event.eventPlanning(bot)
+}, {
+    timezone: "Europe/Paris"
+});
+
+cron.schedule("00 20 * * *", function() {
+    console.log("-- Cron Jour Started --")
+    Event.eventJour(bot)
 }, {
     timezone: "Europe/Paris"
 });
