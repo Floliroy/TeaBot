@@ -80,7 +80,7 @@ module.exports = class Event{
         const chan = bot.channels.get(channelsID.team_lol)
         const msg = await getDayliMessage(bot)
 
-        if(msg != null && msg.reactions.find(val => val.name === "❌").count > 1){
+        if(msg != null && msg.reactions.get("❌").users.size > 1){
             console.log("NON")
         }else if(msg != null){
             console.log("OUI")
