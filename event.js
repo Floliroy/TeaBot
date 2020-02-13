@@ -21,14 +21,15 @@ async function envoieJours(chan){
     for await(let jour of jours){
         
         let date = new Date('December 28, 1995 03:24:00')
-        date.addDays((cpt++))
+        date.addDays(cpt)
+        cpt++
         let dd = date.getDate()
         let mm = date.getMonth() + 1
         /*if(dd < ddSave){
             mm++
         }
         ddSave = dd*/
-
+        console.log(`${jour} ${String(dd).padStart(2, '0')}/${String(mm).padStart(2, '0')}`)
         chan.send({embed: {title : `${jour} ${String(dd).padStart(2, '0')}/${String(mm).padStart(2, '0')}`}})
         .then(msg => {msg.react("✅")
             .then(() => msg.react("❌"))
