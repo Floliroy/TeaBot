@@ -37,24 +37,27 @@ async function clear(chan) {
     chan.bulkDelete(fetched);
 }
 
-function getDayliMessage(bot) {
+async function getDayliMessage(bot) {
     const chan = bot.channels.get(channelsID.planning_lol)
     const today = new Date()
     let date = today.addDays(3)
     let dd = String(date.getDate()).padStart(2, '0')
     let mm = String(date.getMonth() + 1).padStart(2, '0')
 
-    chan.fetchMessages({ limit: 99 }).then(messages => {
+    let retour
+
+    await chan.fetchMessages({ limit: 99 }).then(messages => {
         messages.forEach(function(msg){
-            msg.embeds.forEach(function(element){     
-                console.log(element.title)
+            msg.embeds.forEach(function(element){
                 if(element.title.endsWith(` - ${dd}/${mm}`)){
                     console.log("ok")
-                    return msg
+                    retour = msg
                 }
             })
         })
     })
+
+    return retour
 }
 
 module.exports = class Event{
@@ -76,13 +79,16 @@ module.exports = class Event{
     static eventJour(bot){
         const chan = bot.channels.get(channelsID.team_lol)
         const msg = getDayliMessage(bot)
+        .then(() => function(){
+            if(msg != null && msg.reactions.find(val => val.name === "❌").count > 1){
+                console.log("NON")
+            }else if(msg != null){
+                console.log("OUI")
+            }else{
+                console.log("pas trouvé")
+            }
+        })
         
-        if(msg != null && msg.reactions.find(val => val.name === "❌").count > 1){
-            console.log("NON")
-        }else if(msg != null){
-            console.log("OUI")
-        }else{
-            console.log("pas trouvé")
-        }
+        
     }
 }
