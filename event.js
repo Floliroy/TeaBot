@@ -14,12 +14,12 @@ Date.prototype.addDays = function(days) {
 async function envoieJours(chan){
     const jours = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]
     
-    let cpt = 1
+    const today = new Date('December 28, 1995 03:24:00')
+    let cpt = 0
 
     for await(let jour of jours){
         
-        let date = new Date('December 28, 1995 03:24:00')
-        date.addDays((cpt++))
+        let date = today.addDays((cpt++))
         console.log("Days : " + cpt)
         let dd = String(date.getDate()).padStart(2, '0')
         let mm = String(date.getMonth() + 1).padStart(2, '0')
