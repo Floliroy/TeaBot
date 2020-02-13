@@ -26,7 +26,7 @@ bot.on('message', function (message) {
     Pata.pataMessage(message, bot)
     Cira.ciraMessage(message, bot)
 
-    if(message.content.startsWith() === "!test"){
+    if(message.content.toLowerCase() === "!test"){
         Event.eventJour(bot)
     }
 })
