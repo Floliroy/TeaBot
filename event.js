@@ -14,19 +14,15 @@ Date.prototype.addDays = function(days) {
 async function envoieJours(chan){
     const jours = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]
     
-    const today = new Date('December 28, 1995 03:24:00')
-    let cpt = 0
+    const today = new Date()
+    let cpt = 1
 
     for await(let jour of jours){
-        
         let date = today.addDays((cpt++))
-        console.log("Days : " + cpt)
         let dd = String(date.getDate()).padStart(2, '0')
         let mm = String(date.getMonth() + 1).padStart(2, '0')
         
-        console.log(`${jour} ${dd}/${mm}`)
-
-        chan.send({embed: {title : `${jour} ${dd}/${String(mm).padStart(2, '0')}`}})
+        chan.send({embed: {title : `${jour} - ${dd}/${mm}`}})
         .then(msg => {msg.react("✅")
             .then(() => msg.react("❌"))
             .then(() => msg.react("➖"))
