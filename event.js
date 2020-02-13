@@ -37,7 +37,7 @@ async function clear(chan) {
     chan.bulkDelete(fetched);
 }
 
-function getDayliMessage() {
+function getDayliMessage(bot) {
     const chan = bot.channels.get(channelsID.planning_lol)
     const today = new Date()
     let dd = String(today.getDate() + 2).padStart(2, '0')
@@ -72,7 +72,7 @@ module.exports = class Event{
 
     static eventJour(bot){
         const chan = bot.channels.get(channelsID.team_lol)
-        const msg = getDayliMessage()
+        const msg = getDayliMessage(bot)
         
         if(msg.reactions.find(val => val.name === "❌").count > 1){
             console.log("NON")
