@@ -26,7 +26,7 @@ bot.on('message', function (message) {
     Pata.pataMessage(message, bot)
     Cira.ciraMessage(message, bot)
     
-    if(message === "!test"){
+    if(message.content.toLowerCase === "!test"){
         let channel = bot.channels.get("677556140913197057")
         channel.fetchMessages({ limit: 99 }).then(messages => {
             messages.forEach(function(element){     
