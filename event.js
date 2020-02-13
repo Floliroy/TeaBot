@@ -8,19 +8,20 @@ const channelsID={
 async function envoieJours(chan){
     const jours = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]
 
-    const today = new Date('December 28, 1995 03:24:00')
-    let ddSave
-    let mm = today.getMonth() + 1
+    let date = new Date('December 28, 1995 03:24:00')
+    /*let ddSave
     
-    let cpt = 1
+    let cpt = 1*/
 
     for await(let jour of jours){
         
-        let dd = today.getDate() + (cpt++)
-        if(dd < ddSave){
+        date.setDate(date.getDate + (cpt++))
+        let dd = date.getDate()
+        let mm = date.getMonth() + 1
+        /*if(dd < ddSave){
             mm++
         }
-        ddSave = dd
+        ddSave = dd*/
 
         chan.send({embed: {title : `${jour} ${String(dd).padStart(2, '0')}/${String(mm).padStart(2, '0')}`}})
         .then(msg => {msg.react("✅")
