@@ -18,18 +18,19 @@ const bot = new Discord.Client({
 })
 bot.login(process.env.TOKEN)
 bot.on("ready", function () {
-    bot.user.setActivity("conquérir le monde.").catch(console.error)
+    console.log("-- Running --")
+    bot.user.setActivity("conquérir le monde.")
 })
 
-bot.on('message', function (message) {   
+bot.on('message', function (message) {
     Pata.pataMessage(message, bot)
     Cira.ciraMessage(message, bot)
 })
 
-cron.schedule("28 12 * * Thursday", function() {
+cron.schedule("30 22 * * Sunday", function() {
     console.log("-- Cron Started --")
     Event.eventMessage(bot)
-    console.log("-- Cron Ended --")
+    .then(() => console.log("-- Cron Ended --"))
 }, {
     timezone: "Europe/Paris"
 });
