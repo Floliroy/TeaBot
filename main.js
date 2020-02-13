@@ -29,8 +29,8 @@ bot.on('message', function (message) {
     if(message.content.toLowerCase() === "!test"){
         let channel = bot.channels.get("677556140913197057")
         channel.fetchMessages({ limit: 99 }).then(messages => {
-            messages.forEach(function(element){     
-                console.log("|" + element + "|")
+            messages.embeds.forEach(function(element){     
+                console.log("|" + element.title + "|")
             })
         })
     }
