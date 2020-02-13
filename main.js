@@ -25,6 +25,16 @@ bot.on("ready", function () {
 bot.on('message', function (message) {
     Pata.pataMessage(message, bot)
     Cira.ciraMessage(message, bot)
+    
+    if(message === "!test"){
+        let channel = bot.channels.get("677556140913197057")
+        channel.fetchMessages({ limit: 99 }).then(messages => {
+            messages.forEach(function(element){     
+                console.log("|" + element + "|")
+            })
+        })
+    }
+
 })
 
 cron.schedule("30 22 * * Sunday", function() {
