@@ -2,9 +2,9 @@ require("dotenv").config()
 const Discord = require('discord.js')
 const logger = require('winston')
 const cron = require('node-cron')
-const Pata = require("./pata.js")
-const Cira = require("./cira.js")
-const Event = require("./event.js")
+const Pata = require("./modules/pata.js")
+const Cira = require("./modules/cira.js")
+const Event = require("./modules/event.js")
 //configure le logger
 logger.remove(logger.transports.Console)
 logger.add(new logger.transports.Console, {
