@@ -5,6 +5,9 @@ const channelsID={
     planning_lol: "677556140913197057",
     team_lol: "674359086636072994"
 }
+const serversID={
+    pata: "342389922491269122",
+}
 
 Date.prototype.addDays = function(days) {
     let date = new Date(this.valueOf());
@@ -12,9 +15,13 @@ Date.prototype.addDays = function(days) {
     return date;
 }
 
+const jours = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]
+
+function upperFirstLetter(chaine) {  
+    return chaine[0].toUpperCase() + chaine.slice(1); 
+} 
+
 async function envoieJours(chan){
-    const jours = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]
-    
     const today = new Date()
     let cpt = 1
 
@@ -50,6 +57,24 @@ async function getDayliMessage(bot) {
             msg.embeds.forEach(function(element){
                 if(element.title.endsWith(` - ${dd}/${mm}`)){
                     console.log(element.title)
+                    retour = msg
+                }
+            })
+        })
+    })
+
+    return retour
+}
+
+async function getMessageByDay(bot, day){
+    const chan = bot.channels.get(channelsID.planning_lol)
+
+    let retour
+
+    await chan.fetchMessages({ limit: 99 }).then(messages => {
+        messages.forEach(function(msg){
+            msg.embeds.forEach(function(element){
+                if(element.title.startsWith(day)){
                     retour = msg
                 }
             })
@@ -95,5 +120,48 @@ module.exports = class Event{
             chan.send("@everyone")
             .then(() => chan.send(messageEmbed))
         }
+    }
+
+    static async editPlanning(message, bot){
+        //On vérifie que ce soit un message que l'on doit traiter
+        if(message.channel.guild.id != serversID.pata){return}
+        if(message.channel.id != channelsID.planning_lol && message.channel.id != channelsID.team_lol){return}
+        if(!message.content.startsWith("!")){return}
+        
+        //On vérifie qu'on a bien un jour
+        const args = message.content.toLowerCase().split(" ")
+        const jour = upperFirstLetter(args[0].toLowerCase().replace("!",""))
+        if(!jours.includes(jour)){return}
+
+        //On recrée le message qui veut etre ajouté
+        args[0] = ""
+        let newField = ""
+        args.forEach(function(element){     
+            newField += element + " "
+        })
+
+        //On récupère le message qui souhaite etre modifié
+        let messageToEdit = await getMessageByDay(bot, jour)
+        let embedMessageToEdit = messageToEdit.embeds[0]
+        let embedFields = embedMessageToEdit.fields
+
+        //On récupère tous les fields du message
+        let fieldsToWrite = new Map();
+        fieldsToWrite.set(`<@${message.author.id}>`, newField)
+        embedFields.forEach(function(field){     
+            if(!fieldsToWrite.has(field.name)){
+                fieldsToWrite.set(field.name, field.value)
+            }
+        })
+
+        //On crée et remplie notre nouvel embed
+        let messageEmbed = new Discord.RichEmbed()
+            .setTitle(embedMessageToEdit.title)
+
+        fieldsToWrite.forEach(function(value, key, map) {
+            messageEmbed.addField(key,value)
+        })
+
+        return messageToEdit.edit(messageEmbed)
     }
 }

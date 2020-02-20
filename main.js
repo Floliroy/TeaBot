@@ -25,6 +25,7 @@ bot.on("ready", function () {
 bot.on('message', function (message) {
     Pata.pataMessage(message, bot)
     Cira.ciraMessage(message, bot)
+    Event.editPlanning(message, bot)
 })
 
 cron.schedule("30 22 * * Sunday", function() {
