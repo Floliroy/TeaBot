@@ -147,7 +147,7 @@ module.exports = class Event{
 
         //On récupère tous les fields du message
         let fieldsToWrite = new Map();
-        fieldsToWrite.set(`<@${message.author.id}>`, newField)
+        fieldsToWrite.set(message.author.username, newField)
         embedFields.forEach(function(field){     
             if(!fieldsToWrite.has(field.name)){
                 fieldsToWrite.set(field.name, field.value)
