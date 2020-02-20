@@ -129,7 +129,7 @@ module.exports = class Event{
         if(!message.content.startsWith("!")){return}
         
         //On vérifie qu'on a bien un jour
-        const args = message.content.toLowerCase().split(" ")
+        const args = message.content.split(" ")
         const jour = upperFirstLetter(args[0].toLowerCase().replace("!",""))
         if(!jours.includes(jour)){return}
 
