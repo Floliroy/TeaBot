@@ -138,7 +138,7 @@ module.exports = class Event{
         let newField = ""
         args.forEach(function(element){
             if(element.startsWith(":") && element.endsWith(":")){
-                element = element.replaceAll(":", "")
+                element = element.replace(":", "").replace(":", "")
                 const emote = client.emojis.find(emoji => emoji.name === element)
                 element = `${emote}`
             }
