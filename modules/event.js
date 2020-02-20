@@ -136,7 +136,12 @@ module.exports = class Event{
         //On recrée le message qui veut etre ajouté
         args[0] = ""
         let newField = ""
-        args.forEach(function(element){     
+        args.forEach(function(element){
+            if(element.startsWith(":") && element.endsWith(":")){
+                element = element.replaceAll(":", "")
+                const emote = client.emojis.find(emoji => emoji.name === element)
+                element = `${emote}`
+            }
             newField += element + " "
         })
 
