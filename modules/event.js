@@ -166,7 +166,7 @@ module.exports = class Event{
             .setTitle(embedMessageToEdit.title)
 
         fieldsToWrite.forEach(function(value, key, map) {
-            messageEmbed.addField(key,value)
+            messageEmbed.addField(key,value, true)
         })
 
         message.delete()
