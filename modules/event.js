@@ -136,16 +136,14 @@ module.exports = class Event{
         //On recrée le message qui veut etre ajouté
         args[0] = ""
         let newField = ""
-        if(args.length > 1){
-            args.forEach(function(element){
-                if(element.length >=3 && element.startsWith(":") && element.endsWith(":")){
-                    element = element.replace(":", "").replace(":", "")
-                    const emote = bot.emojis.find(emoji => emoji.name === element)
-                    element = `${emote}`
-                }
-                newField += element + " "
-            })
-        }
+        args.forEach(function(element){
+            if(element.length >=3 && element.startsWith(":") && element.endsWith(":")){
+                element = element.replace(":", "").replace(":", "")
+                const emote = bot.emojis.find(emoji => emoji.name === element)
+                element = `${emote}`
+            }
+            newField += element + " "
+        })
 
         //On récupère le message qui souhaite etre modifié
         let messageToEdit = await getMessageByDay(bot, jour)
@@ -158,7 +156,7 @@ module.exports = class Event{
             fieldsToWrite.set(message.author.username, newField)
         }
         embedFields.forEach(function(field){     
-            if(!fieldsToWrite.has(message.author.username)){
+            if(!fieldsToWrite.has(field.name) && field.name !== message.author.username){
                 fieldsToWrite.set(field.name, field.value)
             }
         })
