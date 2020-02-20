@@ -139,7 +139,7 @@ module.exports = class Event{
         args.forEach(function(element){
             if(element.startsWith(":") && element.endsWith(":")){
                 element = element.replace(":", "").replace(":", "")
-                const emote = client.emojis.find(emoji => emoji.name === element)
+                const emote = bot.emojis.find(emoji => emoji.name === element)
                 element = `${emote}`
             }
             newField += element + " "
@@ -167,6 +167,7 @@ module.exports = class Event{
             messageEmbed.addField(key,value)
         })
 
+        message.delete()
         return messageToEdit.edit(messageEmbed)
     }
 }
