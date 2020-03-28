@@ -30,14 +30,14 @@ bot.on('message', function (message) {
 
 cron.schedule("30 22 * * Sunday", function() {
     console.log("-- Cron Planning Started --")
-    Event.eventPlanning(bot)
+    //Event.eventPlanning(bot)
 }, {
     timezone: "Europe/Paris"
 });
 
 cron.schedule("00 20 * * *", function() {
     console.log("-- Cron Jour Started --")
-    Event.eventJour(bot)
+    //Event.eventJour(bot)
 }, {
     timezone: "Europe/Paris"
 });
