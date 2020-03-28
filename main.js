@@ -26,10 +26,6 @@ bot.on('message', function (message) {
     Pata.pataMessage(message, bot)
     Cira.ciraMessage(message, bot)
     Event.editPlanning(message, bot)
-
-    if(message.content == "!team_lol" && message.author.id == "112632359207108608" && message.channel.guild.id == "342389922491269122"){
-        message.member.roles.add("573143942632046612")
-    }
 })
 
 cron.schedule("30 22 * * Sunday", function() {
