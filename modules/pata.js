@@ -172,6 +172,11 @@ module.exports = class Pata{
                 multiplicator = 0.8
             }       
             return sendRandomNumber(100, multiplicator, 0xFF69B4, "Gay Rate Machine", textToSend, message.channel)
+        }else if(texte.startsWith("!copy")){
+            if(authUserId.includes(message.author.id) && texte.includes(" ")){
+                message.delete()
+                return message.channel.send(message.content.substring(6))
+            }return
         }else if(texte.startsWith("!waifu")){
             let textToSend = `<@${userId}>, tu es une waifu à `
             if(texte.includes(" ") && message.mentions.users.firstKey(undefined)!= null){
