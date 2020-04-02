@@ -126,6 +126,11 @@ module.exports = class Pata{
                 if(authUserId.includes(message.author.id)){
                     return message.channel.send("Gros... Même o4 fait moins de fautes :worried:")
                 } return
+            case "!chien":
+                if(authUserId.includes(message.author.id)){
+                    message.delete()
+                    return message.channel.send("Sale chien va ! :dog:")
+                } return
             case "simple": 
                 return message.channel.send("basique")
             case "basique":
