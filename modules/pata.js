@@ -118,17 +118,20 @@ module.exports = class Pata{
                 }})
             case "!besch":
                 message.delete()
+                console.log(`${message.author.username} (${message.author.id}) send : "${message.content}"`)
                 if(authUserId.includes(message.author.id)){
                     return message.channel.send("Apprends à écrire fdp")
                 } return
             case "!besch+":
                 message.delete()
+                console.log(`${message.author.username} (${message.author.id}) send : "${message.content}"`)
                 if(authUserId.includes(message.author.id)){
                     return message.channel.send("Gros... Même o4 fait moins de fautes :worried:")
                 } return
             case "!chien":
                 if(authUserId.includes(message.author.id)){
                     message.delete()
+                    console.log(`${message.author.username} (${message.author.id}) send : "${message.content}"`)
                     return message.channel.send("Sale chien va ! :dog:")
                 } return
             case "simple": 
@@ -175,6 +178,7 @@ module.exports = class Pata{
         }else if(texte.startsWith("!copy")){
             if(authUserId.includes(message.author.id) && texte.includes(" ")){
                 message.delete()
+                console.log(`${message.author.username} (${message.author.id}) send : "${message.content}"`)
                 return message.channel.send(message.content.substring(6))
             }return
         }else if(texte.startsWith("!waifu")){
