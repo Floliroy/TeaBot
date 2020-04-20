@@ -189,16 +189,15 @@ module.exports = class Pata{
                     valeur = parseInt(args[0])
                 }
             }
-            message.delete()
             console.log(`${message.author.username} (${message.author.id}) send : "${message.content}"`)
 
-            if(!authUserId.includes(message.author.id)){return}
+            if(!authUserId.includes(message.author.id)){return message.delete()}
 
             return message.channel.fetchMessages({ limit: valeur }).then(messages => {
                 messages.forEach(function(msg){
                     msg.delete()
                 })
-            })
+            }).then(() => message.delete())
         }else if(texte.startsWith("!waifu")){
             let textToSend = `<@${userId}>, tu es une waifu à `
             if(texte.includes(" ") && message.mentions.users.firstKey(undefined)!= null){
