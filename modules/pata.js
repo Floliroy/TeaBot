@@ -192,14 +192,12 @@ module.exports = class Pata{
                 const args = message.content.split(" ")
                 if(!isNaN(args[1]) && parseInt(args[1]) <= 100){
                     valeur = parseInt(args[1])
-                    console.log("test 1 : " + valeur)
                 }
             }
             message.delete()
             console.log(`${message.author.username} (${message.author.id}) send : "${message.content}"`)
 
             if(!authUserId.includes(message.author.id)){return}
-            console.log("test 2 : " + valeur)
             return deleteMessages(message, valeur)
         }else if(texte.startsWith("!waifu")){
             let textToSend = `<@${userId}>, tu es une waifu à `
