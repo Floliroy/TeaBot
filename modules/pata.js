@@ -27,6 +27,9 @@ function doesStringContainList(text, list){
 const serversID={
     cira: "669236647765999676",
 }
+const channelsID={
+    delete: "701739123731595415",
+}
 const usersId = {
     titouan: "300246251834834945",
     o4: "302898536356511745",
@@ -71,10 +74,23 @@ const rapportList = ["baise","baisé","sex","suce","sucé","penis","pénis","gay
 
 async function deleteMessages(message, valeur){
     const fetched = await message.channel.fetchMessages({limit: valeur})
-    message.channel.bulkDelete(fetched)
+    message.channel.bulkDelete(fetched).catch(function(e){})
 }
 
 module.exports = class Pata{
+    static pataDelete(message, bot){
+        if(message.author === bot.user){return}
+
+        const chan = bot.channels.get(channelsID.delete)
+        let messageEmbed = new Discord.RichEmbed()
+            .setTitle(message.author.tag)
+            .setThumbnail(message.author.avatarURL)
+            .addField("Content", message.content)
+            .setFooter(`In channel #${message.channel.name}`)
+
+        return chan.send(messageEmbed)
+    }
+
     static pataMessage(message, bot){
         if(message.author === bot.user){return}
         if(message.channel.guild.id === serversID.cira){return}
@@ -194,11 +210,11 @@ module.exports = class Pata{
                     valeur = parseInt(args[1])
                 }
             }
-            message.delete()
+            message.delete().catch(function(e){})
             console.log(`${message.author.username} (${message.author.id}) send : "${message.content}"`)
 
             if(!authUserId.includes(message.author.id)){return}
-            return deleteMessages(message, valeur)
+            return deleteMessages(message, valeur).catch(function(err){})
         }else if(texte.startsWith("!waifu")){
             let textToSend = `<@${userId}>, tu es une waifu à `
             if(texte.includes(" ") && message.mentions.users.firstKey(undefined)!= null){
