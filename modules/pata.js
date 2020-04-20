@@ -70,7 +70,7 @@ messByID.set(usersId.o4, "Le plus déco ...")
 const rapportList = ["baise","baisé","sex","suce","sucé","penis","pénis","gay","lesbien","chatte","vagin","69","nude","bdsm","bz","fesse","boob","bite","cul","gasm","<3","porno","zizi","jtm"]
 
 async function deleteMessages(message, valeur){
-    const fetched = await msg.channel.fetchMessages({limit: valeur})
+    const fetched = await message.channel.fetchMessages({limit: valeur})
     message.channel.bulkDelete(fetched)
 }
 
