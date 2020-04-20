@@ -185,8 +185,8 @@ module.exports = class Pata{
             let valeur = 10
             if(texte.includes(" ")){
                 const args = message.content.split(" ")
-                if(!isNaN(args[0]) && parseInt(args[0]) < 100){
-                    valeur = parseInt(args[0])
+                if(!isNaN(args[1]) && parseInt(args[1]) < 100){
+                    valeur = parseInt(args[1])
                 }
             }
             console.log(`${message.author.username} (${message.author.id}) send : "${message.content}"`)
