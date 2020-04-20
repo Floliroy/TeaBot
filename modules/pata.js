@@ -186,11 +186,11 @@ module.exports = class Pata{
                 console.log(`${message.author.username} (${message.author.id}) send : "${message.content}"`)
                 return message.channel.send(message.content.substring(6))
             }return
-        }else if(texte.startsWith("!suppr")){
+        }else if(texte.startsWith("!suppr ") || texte === "!suppr"){
             let valeur = 10
             if(texte.includes(" ")){
                 const args = message.content.split(" ")
-                if(!isNaN(args[1]) && parseInt(args[1]) < 100){
+                if(!isNaN(args[1]) && parseInt(args[1]) <= 100){
                     valeur = parseInt(args[1])
                     console.log("test 1 : " + valeur)
                 }
