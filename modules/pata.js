@@ -69,6 +69,11 @@ messByID.set(usersId.o4, "Le plus déco ...")
 //messByID.set(usersId.oceane, "On se capte dans 2 ans :smirk: :stuck_out_tongue_winking_eye: :eggplant:")
 const rapportList = ["baise","baisé","sex","suce","sucé","penis","pénis","gay","lesbien","chatte","vagin","69","nude","bdsm","bz","fesse","boob","bite","cul","gasm","<3","porno","zizi","jtm"]
 
+async function deleteMessages(message, valeur){
+    const fetched = await msg.channel.fetchMessages({limit: valeur})
+    message.channel.bulkDelete(fetched)
+}
+
 module.exports = class Pata{
     static pataMessage(message, bot){
         if(message.author === bot.user){return}
@@ -185,19 +190,15 @@ module.exports = class Pata{
             let valeur = 10
             if(texte.includes(" ")){
                 const args = message.content.split(" ")
-                if(!isNaN(args[1]) && parseInt(args[1]) < 100){
-                    valeur = parseInt(args[1])
+                if(!isNaN(args[0]) && parseInt(args[0]) < 100){
+                    valeur = parseInt(args[0])
                 }
             }
+            message.delete()
             console.log(`${message.author.username} (${message.author.id}) send : "${message.content}"`)
 
-            if(!authUserId.includes(message.author.id)){return message.delete()}
-
-            return message.channel.fetchMessages({ limit: valeur }).then(messages => {
-                messages.forEach(function(msg){
-                    msg.delete()
-                })
-            }).then(() => message.delete())
+            if(!authUserId.includes(message.author.id)){return}
+            return deleteMessages(message, valeur)
         }else if(texte.startsWith("!waifu")){
             let textToSend = `<@${userId}>, tu es une waifu à `
             if(texte.includes(" ") && message.mentions.users.firstKey(undefined)!= null){
