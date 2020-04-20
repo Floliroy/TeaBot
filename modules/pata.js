@@ -190,7 +190,7 @@ module.exports = class Pata{
             let valeur = 10
             if(texte.includes(" ")){
                 const args = message.content.split(" ")
-                if(!isNaN(args[1]) && parseInt(args[1]) <= 100){
+                if(!isNaN(args[1]) && parseInt(args[1]) <= 100 && parseInt(args[1]) > 0){
                     valeur = parseInt(args[1])
                 }
             }
