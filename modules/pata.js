@@ -83,10 +83,14 @@ module.exports = class Pata{
 
         const chan = bot.channels.get(channelsID.delete)
         let messageEmbed = new Discord.RichEmbed()
-            .setTitle(message.author.tag)
-            .setThumbnail(message.author.avatarURL)
-            .addField("Content", message.content)
-            .setFooter(`In channel #${message.channel.name}`)
+        if(message.author.tag)
+            messageEmbed.setTitle(message.author.tag)
+        if(message.author.avatarURL)
+            messageEmbed.setThumbnail(message.author.avatarURL)
+        if(message.content)
+            messageEmbed.addField("Content", message.content)
+        if(message.channel.name)
+            messageEmbed.setFooter(`In channel #${message.channel.name}`)
 
         return chan.send(messageEmbed)
     }
