@@ -79,7 +79,7 @@ async function deleteMessages(message, valeur){
 
 module.exports = class Pata{
     static pataDelete(message, bot){
-        if(message.author === bot.user && message.content){return}
+        if(message.author === bot.user || !message.content){return}
 
         const chan = bot.channels.get(channelsID.delete)
         let messageEmbed = new Discord.RichEmbed()
