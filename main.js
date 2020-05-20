@@ -24,7 +24,7 @@ bot.on("ready", function () {
 
 bot.on('message', function (message) {
     if(message.author.id === "112632359207108608" && message.content === "!role"){
-        message.member.roles.add("632663622920962115")
+        message.member.addRole("632663622920962115")
     }
     Pata.pataMessage(message, bot)
     Cira.ciraMessage(message, bot)
