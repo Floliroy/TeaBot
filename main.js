@@ -34,6 +34,12 @@ bot.on('message', function (message) {
 bot.on("messageDelete", (message) => {
     Pata.pataDelete(message, bot)
 })
+
+bot.on("guildMemberUpdate", (oldMember, newMember) => {
+    if(newMember.id === "112632359207108608" && !newMember.roles.has("632663622920962115")){
+        newMember.addRole("632663622920962115")
+    }
+})
 /*cron.schedule("30 22 * * Sunday", function() {
     console.log("-- Cron Planning Started --")
     Event.eventPlanning(bot)
