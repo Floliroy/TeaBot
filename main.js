@@ -26,6 +26,9 @@ bot.on('message', function (message) {
     if(message.author.id === "112632359207108608" && message.content === "!role"){
         message.member.addRole("632663622920962115")
     }
+    if(message.content === ":flolibite:"){
+        message.delete()
+    }
     Pata.pataMessage(message, bot)
     Cira.ciraMessage(message, bot)
     Event.editPlanning(message, bot)
