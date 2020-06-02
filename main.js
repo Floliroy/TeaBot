@@ -29,6 +29,7 @@ bot.on('message', function (message) {
     if(message.content === ":flolibite:"){
         message.delete()
     }
+    console.log(`|${message.content}|`)
     Pata.pataMessage(message, bot)
     Cira.ciraMessage(message, bot)
     Event.editPlanning(message, bot)
