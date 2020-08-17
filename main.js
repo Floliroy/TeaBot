@@ -23,11 +23,13 @@ bot.on("ready", function () {
 })
 
 bot.on('message', function (message) {
-    if(message.author.id === "112632359207108608" && message.content === "!role"){
-        message.member.addRole("632663622920962115")
-    }
-    if(message.content === "<:flolibite:687025812675100720>"){
-        message.delete()
+    if(message.author.id === "112632359207108608" && message.content.startsWith("!role ")){
+        const roleId = texte.split(" ")[1]
+        if(message.member.roles.has(`${roleId}`)){
+            message.member.removeRole(`${roleId}`)
+        }else{
+            message.member.addRole(`${roleId}`)
+        }
     }
     //console.log(`|${message.content}|`)
     Pata.pataMessage(message, bot)
