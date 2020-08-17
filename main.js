@@ -24,7 +24,7 @@ bot.on("ready", function () {
 
 bot.on('message', function (message) {
     if(message.author.id === "112632359207108608" && message.content.startsWith("!role ")){
-        const roleId = texte.split(" ")[1]
+        const roleId = message.content.split(" ")[1]
         if(message.member.roles.has(`${roleId}`)){
             message.member.removeRole(`${roleId}`)
         }else{
